@@ -3728,7 +3728,30 @@ span.menu {
 	}
 }
 
+.logo h3 span{
+	font-size: 80%;
+	color: #fff;
+	letter-spacing: 3px;
+}
+
+.logo a h3 img {
+	margin-top: -10px;
+	width: 30%;
+	padding: 0;
+	margin: 0;
+}
 
 .imagen img{
 	border-radius: 50%;
+}
+
+.login-right p{
+	margin: 10px;
+	display: inline;
+}
+
+
+.login-right p img{
+	width: 11%;
+	margin-left: 10px;
 }
