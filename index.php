@@ -1,13 +1,13 @@
 <?php 
-
 	include './include/conexion.php';
 	$conexion = new ConexionSql('localhost','root','','WISPCH');
 	$conexion->Conectar();
 	//Query 
 	$query = $conexion->ConsultaSql("SELECT P.nombrepaquete, P.megas, P.descripcion, P.precio, C.Categoria
 									from paquetes P inner join categorias C on P.idCategoria = C.idCategoria;");
+	$conexion->resultadoSql();
 
-	//$conexion->resultadoSql();
+	var_dump(count($query[0])); // 7 filas * 5 columnas   
 ?>
 
 <!--A Design by W3layouts
@@ -115,66 +115,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <div class="plans">
 	<div class="container">
+
+	
 		<!-- pricing table -->
 		<h1 class="heading">Planes Más Populares</h1>
 		<h1 class="heading">Instalacion: $1,000.°° incluye un mes gratis</h1>
-		<div class="col-md-4 one_third pricing">
-			<div class="pricing_top">
-				<h6><?= $query[6][4] ?></h6>
-				<p><sup>$</sup>232.°°</p>
-			</div>
-			<div class="pricing_middle">
-				<ul>
-					<li>Ideal para el hogar</li>
-					<li>Iva Incluido</li>
-					<li>Pagos Mensuales</li>
-					<li>Hasta 5/5 ↓↑ Mbps</li>
-				</ul>
-			</div>
-			<div class="pricing_bottom">
-				<a href="#">Contratar</a>
-			</div>
-		</div>
 
-		<div class="col-md-4 one_third pricing">
-			<div class="pricing_top">
-			<h6><?= $query[4][4] ?></h6>
-				<p><sup>$</sup>348.°°</p>
-			</div>
-			<div class="pricing_middle">
-				<ul>
-					<li>Ideal para jugar</li>
-					<li>Iva Incluido</li>
-					<li>Pagos Mensuales</li>
-					<li>Hasta 10/10 ↓↑ Mbps</li>
-				</ul>
-			</div>
-			<div class="pricing_bottom">
-				<a href="#">Contratar</a>
-			</div>
-		</div>
+			<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->
+			<?php
+				 // deberian ser 6 (5 PHP) 
+			for($r=0; $r<count($query); $r++){ //crea tarjetas
+			?>
 
-		<div class="col-md-4 one_third last pricing">
-			<div class="pricing_top">
-			<h6><?= $query[3][4] ?></h6>
-				<p><sup>$</sup>500.°°</p>
-			</div>
-			<div class="pricing_middle">
-				<ul>
-					<li>Ideal si requieres de más</li>
-					<li>Iva Incluido</li>
-					<li>Pagos Mensuales</li>
-					<li>Hasta 15/15 ↓↑ Mbps</li>
-				</ul>
-			</div>
-			<div class="pricing_bottom">
-				<a href="#">Contratar</a>
-			</div>
-		</div>
+			<div class="col-md-4 one_third pricing">
+				<div class="pricing_top">
+					<h6><?= $query[$r][0]?></h6> <br> <!--Nombre Paquete ;)-->
+					<p><sup><?= $query[$r][4] ?></sup></p> <br> <!--CATEGORIA ;)-->
+					<p><sup>$ <?= $query[$r][3] ?>.00</sup></p> <!--PRECIO ;)-->
 
-		<div class="clearfix"></div>
-
-	</div>
+					</div>
+				<div class="pricing_middle">
+					<ul>
+						<li><?= $query[$r][2]?></li>
+						<li>Iva Incluido</li>
+						<li>Pagos Mensuales</li>
+						<li>Hasta <?= $query[$r][1]?> ↓↑ Mbps</li> <!--Velocidad ;)-->
+					</ul>
+				</div>
+				<div class="pricing_bottom">
+					<a href="#">Contratar</a>
+				</div>
+			</div>
+	<?php
+		}
+	?>
+	
 </div>
 <div class="fullwidth-section semi-background">
 	<div class="fullwidth-bg">
