@@ -130,9 +130,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="col-md-4 one_third pricing">
 				<div class="pricing_top">
-					<h6><?= $query[$r][0]?></h6> <br> <!--Nombre Paquete ;)-->
-					<p><sup><?= $query[$r][4] ?></sup></p> <br> <!--CATEGORIA ;)-->
-					<p><sup>$ <?= $query[$r][3] ?>.00</sup></p> <!--PRECIO ;)-->
+					<h6><?= utf8_encode($query[$r][0])?></h6> <br> <!--Nombre Paquete ;)-->
+					<p><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br> <!--CATEGORIA ;)-->
+					<p><sup>$ <?= utf8_encode ( $query[$r][3]) ?>.00</sup></p> <!--PRECIO ;)-->
 
 					</div>
 				<div class="pricing_middle">
@@ -140,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><?= $query[$r][2]?></li>
 						<li>Iva Incluido</li>
 						<li>Pagos Mensuales</li>
-						<li>Hasta <?= $query[$r][1]?> ↓↑ Mbps</li> <!--Velocidad ;)-->
+						<li>Hasta <?= utf8_encode($query[$r][1])?> ↓↑ Mbps</li> <!--Velocidad ;)-->
 					</ul>
 				</div>
 				<div class="pricing_bottom">
