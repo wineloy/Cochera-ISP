@@ -1,5 +1,6 @@
 <?php 
-	include './include/conexion.php';
+	include './include/conexion.php'; 
+	//Hay que tomar en cuenta que esto es una mala practica esta info se debe de almacenar en archivos .env
 	$conexion = new ConexionSql('localhost','root','','WISPCH');
 	$conexion->Conectar();
 	//Query 
@@ -7,7 +8,7 @@
 									from paquetes P inner join categorias C on P.idCategoria = C.idCategoria;");
 	$conexion->resultadoSql();
 
-	var_dump(count($query[0])); // 7 filas * 5 columnas   
+	//var_dump(count($query[0])); // 7 filas * 5 columnas   
 ?>
 
 <!--A Design by W3layouts
