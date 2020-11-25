@@ -101,7 +101,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 
 			<h3>Paquetes</h3>
-			<h3>Instalacion: $1,000.°° incluye un mes gratis</h3>
+			<h6>Instalacion: $1,000.°° incluye un mes gratis</h6>
 			
 			<div class="clearfix"></div>
 		</div>
