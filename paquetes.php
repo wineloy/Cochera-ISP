@@ -333,12 +333,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <!--Se compara los paquetes -->
-<div class="container">
+<!--<div class="container">
 
 	<div class="row PageHead">
 		<div class="col-md-12">
-			<h1>Compare Plans</h1>
-			<h3>Another Plans page with comparison table</h3>
+			<h1>Compara nuestros paquetes</h1>
+			<h3></h3>
 		</div>
 	</div>
 	<div class="row ComparePlans">
@@ -361,7 +361,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-sm-6 col-md-3 pricing1">
 			<div class="planHead2">
-				<h3>STANDARD</h3>
+				<h3>GAMER</h3>
 			</div>
 			<div class="planFeatures">
 				<ul class="visible-sm visible-xs">
@@ -393,23 +393,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-sm-6 col-md-3 pricing2">
 			<div class="planHead3">
-				<h3>DEDICATED</h3>
+				<h3>EMPRESAS</h3>
 			</div>
 			<div class="planFeatures">
 				<ul class="visible-sm visible-xs">
-					<li>Setup Fee : NA</li>
-					<li> Multi Domain : Up to 2 </li>
-					<li> Storage Space 1 GB</li>
-					<li>Monthly Bandwidth 10 GB</li>
-					<li> MySQL Databases : 5</li>
-					<li>Sub-domains : 2</li>
-					<li>Email Accounts : 25</li>
-					<li> Shared 128bit SSL : No</li>
-					<li>Control panel : Yes</li>
-					<li>24/7 Support : Yes</li>
+					<li>Velocidad</li>
+					<li>Capacidad de usuarios</li>
+					<li>Megas estables</li>
+					<li>Soporte técnico </li>
+					<li>Soporte a la medida</li>
+					<li>Ping</li>
 				</ul>
 				<ul class="hidden-sm hidden-xs">
-					<li>NA</li>
+					<li>js</li>
 					<li> Up to 2 </li>
 					<li> 1 GB</li>
 					<li>10 GB</li>
@@ -425,11 +421,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-sm-6 col-md-3 col-sm-offset-3 col-md-offset-0 pricing1">
 			<div class="planHead2">
-				<h3>MANAGED</h3>
+				<h3>BÁSICO</h3>
 			</div>
 			<div class="planFeatures">
 				<ul class="visible-sm visible-xs">
-					<li>Setup Fee : NA</li>
+					<li>Setup Fee : NAfgdf</li>
 					<li> Multi Domain : Up to 2 </li>
 					<li> Storage Space 1 GB</li>
 					<li>Monthly Bandwidth 10 GB</li>
@@ -457,10 +453,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 </div>
+-->
 
-<!-- #Testimonials -->
 
-<!-- /#Testimonials -->
 <!-- #Footer -->
 <footer>
 	<div class="copyrights">
