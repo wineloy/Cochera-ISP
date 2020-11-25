@@ -119,8 +119,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	
 		<!-- pricing table -->
-		<h1 class="heading">Planes Más Populares</h1>
-		<h1 class="heading">Instalacion: $1,000.°° incluye un mes gratis</h1>
+		
 		<h2 class="heading">Estas son nuestras categorias</h2>
 
 			<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->

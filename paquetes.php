@@ -64,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="banner inner-banner">
 	<div class="header">
 		<div class="container">
-		<div class="logo">
+			<div class="logo">
 				<a href="index.php">
 					<h3><span>LCW</span></h3>
 				</a>
@@ -101,7 +101,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 
 			<h3>Paquetes</h3>
-
+			<h3>Instalacion: $1,000.°° incluye un mes gratis</h3>
+			
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -127,6 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<input id="tab4" type="radio" name="tabs">
 				<label for="tab4"> HOGAR</label>
 
+
 				<section id="content1">
 					<div class="menu-grids">
 						<div class="t-in">
@@ -142,11 +144,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											if ($query[$r][4] == "GAMER") {
 
 										?>
-												<div class="col-md-4 one_third  pricing">
+												<div class="col-md-4 one_third pricing one_third2 ">
 													<div class="pricing_top">
 														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
 														<!--Nombre Paquete ;)-->
-														<p><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
+														<p style="color: white !important;"><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
 														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p>
 														<!--PRECIO ;)-->
@@ -193,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											if ($query[$r][4] == "BASICO") {
 										?>
 
-												<div class="col-md-4 one_third pricing">
+												<div class="col-md-4 one_third pricing one_third2">
 													<div class="pricing_top">
 														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
 														<!--Nombre Paquete ;)-->
@@ -239,7 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											if ($query[$r][4] == "EMPRESAS") {
 										?>
 
-												<div class="col-md-4 one_third pricing">
+												<div class="col-md-4 one_third pricing one_third2">
 													<div class="pricing_top">
 														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
 														<!--Nombre Paquete ;)-->
@@ -287,7 +289,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											if ($query[$r][4] == "HOGAR") {
 										?>
 
-												<div class="col-md-4 one_third pricing">
+												<div class="col-md-4 one_third pricing one_third2">
 													<div class="pricing_top">
 														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
 														<!--Nombre Paquete ;)-->
