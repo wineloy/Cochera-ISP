@@ -4,9 +4,8 @@
 	$conexion = new ConexionSql('localhost','root','','WISPCH');
 	$conexion->Conectar();
 	//Query 
-	$query = $conexion->ConsultaSql("SELECT P.nombrepaquete, P.megas, P.descripcion, P.precio, C.Categoria
-									from paquetes P inner join categorias C on P.idCategoria = C.idCategoria;");
-	$conexion->resultadoSql();
+	$query = $conexion->ConsultaSql("select categoria from categorias");
+	//$conexion->resultadoSql();
 
 	//var_dump(count($query[0])); // 7 filas * 5 columnas   
 ?>
@@ -69,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header">
 		<div class="container">
 			<div class="logo">
-				<a href="index.html">
+				<a href="index.php">
 					<h3><span>LCW</span></h3>
 				</a>
 			</div>
@@ -80,7 +79,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<span class="menu"> Menu</span>
 			<div class="banner-top">
 				<ul class="nav banner-nav">
-					<li><a class="active" href="index.html">Inicio</a></li>
+					<li><a class="active" href="index.php">Inicio</a></li>
+					<li><a href="paquetes.php">Paquetes</a></li>
 					<li class="dropdown1"><a href="ubicacion.html">Ubicación</a></li>
 					<li class="dropdown1"><a href="about.html">Contacto</a></li>
 					<li class="dropdown1"><a href="support.html">Soporte</a></li>
@@ -121,6 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- pricing table -->
 		<h1 class="heading">Planes Más Populares</h1>
 		<h1 class="heading">Instalacion: $1,000.°° incluye un mes gratis</h1>
+		<h2 class="heading">Estas son nuestras categorias</h2>
 
 			<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->
 			<?php
@@ -130,21 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="col-md-4 one_third pricing">
 				<div class="pricing_top">
-					<h6><?= utf8_encode($query[$r][0])?></h6> <br> <!--Nombre Paquete ;)-->
-					<p><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br> <!--CATEGORIA ;)-->
-					<p><sup>$ <?= utf8_encode ( $query[$r][3]) ?>.00</sup></p> <!--PRECIO ;)-->
-
-					</div>
-				<div class="pricing_middle">
-					<ul>
-						<li><?= $query[$r][2]?></li>
-						<li>Iva Incluido</li>
-						<li>Pagos Mensuales</li>
-						<li>Hasta <?= utf8_encode($query[$r][1])?> ↓↑ Mbps</li> <!--Velocidad ;)-->
-					</ul>
-				</div>
-				<div class="pricing_bottom">
-					<a href="#">Contratar</a>
+					<h6> <a href="paquetes.php"><?= utf8_encode($query[$r][0]) ?></a></h6> <br> <!--Nombre Paquete ;)-->
 				</div>
 			</div>
 	<?php
