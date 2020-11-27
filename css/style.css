@@ -359,7 +359,9 @@ display: inline-block;
 }
 .pricing_top { 
   padding: 35px 0;
-  background-color: #000; }
+  background-color: #000; 
+  max-height: 180px;
+}
 .pricing_top h6 {
 	margin: 0;
 	color: #1BBC9B;
@@ -3794,7 +3796,7 @@ p.sub-meta {
 
 .text-info-sec p {
 	color: #666;
-	font-size: 17px;
+	font-size: 14px;
 }
 
 .text-info-sec h3 {
