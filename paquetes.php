@@ -1,5 +1,4 @@
 <?php
-
 // function require one parament type String 
 // Return query SQL 
 include './include/conexion.php';
@@ -7,12 +6,14 @@ include './include/conexion.php';
 $conexion = new ConexionSql('localhost', 'root', '', 'WISPCH');
 $conexion->Conectar();
 //Query 
-$query = $conexion->ConsultaSql("SELECT P.nombrepaquete, P.megas, P.descripcion, P.precio, C.Categoria
+$query = $conexion->ConsultaSql("SELECT P.nombrepaquete, P.megas, P.descripcion, P.precio, C.Categoria, P.idPaquete
 		from paquetes P inner join categorias C on P.idCategoria = C.idCategoria ;");
-$conexion->CerrarSql();
-//var_dump(count($query[0])); // 7 filas * 5 columnas   
-?>
 
+$oferta = $conexion->ConsultaSql("SELECT idPaquete from ofertas ;"); 
+
+$conexion->CerrarSql();
+#var_dump(count($query[0])); // 7 filas * 5 columnas   
+?>
 
 <!DOCTYPE HTML>
 <html>
@@ -102,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<h3>Paquetes</h3>
 			<h6>Instalacion: $1,000.°° incluye un mes gratis</h6>
-			
+
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -150,9 +151,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<!--Nombre Paquete ;)-->
 														<p style="color: white !important;"><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
-														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p>
+														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p> <br>
 														<!--PRECIO ;)-->
-
+														<?php 
+															if ($query[$r][5] == $oferta[0][0]) {
+																echo '<p style="background-color: red; height:18px">Paquete con Descuento</p>';
+															}
+														?>
 													</div>
 													<div class="pricing_middle">
 														<ul>
@@ -201,8 +206,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<!--Nombre Paquete ;)-->
 														<p><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
-														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p>
+														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p> <br>
 														<!--PRECIO ;)-->
+														<?php 
+															if ($query[$r][5] == $oferta[1][0]) {
+																echo '<p style="background-color: red; height:18px">Paquete con Descuento</p>';
+															}
+														?>
 
 													</div>
 													<div class="pricing_middle">
@@ -249,6 +259,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<!--CATEGORIA ;)-->
 														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p>
 														<!--PRECIO ;)-->
+														<?php 
+															if ($query[$r][5] == $oferta[0][0]) {
+																echo '<p style="background-color: red; height:18px">Paquete con Descuento</p>';
+															}
+														?>
 
 													</div>
 													<div class="pricing_middle">
@@ -288,7 +303,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										for ($r = 0; $r < count($query); $r++) { //crea tarjetas
 											if ($query[$r][4] == "HOGAR") {
 										?>
-
 												<div class="col-md-4 one_third pricing one_third2">
 													<div class="pricing_top">
 														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
@@ -297,7 +311,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<!--CATEGORIA ;)-->
 														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p>
 														<!--PRECIO ;)-->
-
+														<?php 
+															if ($query[$r][5] == $oferta[0][0]) {
+																echo '<p style="background-color: red; height:18px">Paquete con Descuento</p>';
+															}
+														?>
 													</div>
 													<div class="pricing_middle">
 														<ul>
