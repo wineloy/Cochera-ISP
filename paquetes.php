@@ -151,11 +151,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<!--Nombre Paquete ;)-->
 														<p style="color: white !important;"><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
-														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p> <br>
 														<!--PRECIO ;)-->
 														<?php 
 															if ($query[$r][5] == $oferta[0][0]) {
-																echo '<p style="background-color: red; height:18px">Paquete con Descuento</p>';
+																echo '<div style="background-color: red; height:65px">
+																<p style="font-size: 17px !important;">Paquete con Descuento</p>
+																<p style="margin-top: 10px;"><sup>$'. utf8_encode($query[$r][3]).'.00</sup> </p> 
+																</div>';
 															}
 														?>
 													</div>
@@ -206,11 +208,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<!--Nombre Paquete ;)-->
 														<p><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
-														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p> <br>
 														<!--PRECIO ;)-->
 														<?php 
 															if ($query[$r][5] == $oferta[1][0]) {
-																echo '<p style="background-color: red; height:18px">Paquete con Descuento</p>';
+																echo '<div style="background-color: red; height:65px">
+																<p style="font-size: 17px !important;">Paquete con Descuento</p>
+																<p style="margin-top: 10px;"><sup>$'. utf8_encode($query[$r][3]).'.00</sup> </p> 
+																</div>';
 															}
 														?>
 
@@ -261,7 +265,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<!--PRECIO ;)-->
 														<?php 
 															if ($query[$r][5] == $oferta[0][0]) {
-																echo '<p style="background-color: red; height:18px">Paquete con Descuento</p>';
+																echo '<div style="background-color: red; height:65px">
+																<p style="font-size: 17px !important;">Paquete con Descuento</p>
+																<p style="margin-top: 10px;"><sup>'. utf8_encode($query[$r][3]).'00</sup> </p> 
+																</div>';
 															}
 														?>
 
@@ -313,7 +320,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<!--PRECIO ;)-->
 														<?php 
 															if ($query[$r][5] == $oferta[0][0]) {
-																echo '<p style="background-color: red; height:18px">Paquete con Descuento</p>';
+																echo '<div style="background-color: red; height:65px">
+																<p style="font-size: 17px !important;">Paquete con Descuento</p>
+																<p style="margin-top: 10px;"><sup>'. utf8_encode($query[$r][3]).'00</sup> </p> 
+																</div>';
 															}
 														?>
 													</div>
