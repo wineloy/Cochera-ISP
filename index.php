@@ -1,13 +1,14 @@
-<?php 
-	include './include/conexion.php'; 
-	//Hay que tomar en cuenta que esto es una mala practica esta info se debe de almacenar en archivos .env
-	$conexion = new ConexionSql('localhost','root','','WISPCH');
-	$conexion->Conectar();
-	//Query 
-	$query = $conexion->ConsultaSql("select categoria from categorias");
-	//$conexion->resultadoSql();
+<?php
+include './include/conexion.php';
+//Hay que tomar en cuenta que esto es una mala practica esta info se debe de almacenar en archivos .env
+$conexion = new ConexionSql('localhost', 'root', '', 'WISPCH');
+$conexion->Conectar();
+//Query 
+$query = $conexion->ConsultaSql("select categoria from categorias");
+//$conexion->resultadoSql();
+$paquetesOfertas = $conexion->ConsultaSql("call PaquetesConOferta;");
 
-	//var_dump(count($query[0])); // 7 filas * 5 columnas   
+//var_dump(count($query[0])); // 7 filas * 5 columnas   
 ?>
 
 <!--A Design by W3layouts
@@ -117,161 +118,202 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="plans">
 	<div class="container">
 
-	
+
 		<!-- pricing table -->
-		
+
 		<h2 class="heading">Estas son nuestras categorias</h2>
 
-			<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->
-			<?php
-				 // deberian ser 6 (5 PHP) 
-			for($r=0; $r<count($query); $r++){ //crea tarjetas
-			?>
-
+		<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->
+		<?php
+		// deberian ser 6 (5 PHP) 
+		for ($r = 0; $r < count($query); $r++) { //crea tarjetas
+		?>
 			<div class="col-md-4 one_third pricing">
 				<div class="pricing_top">
-					<h6> <a href="paquetes.php"><?= utf8_encode($query[$r][0]) ?></a></h6> <br> <!--Nombre Paquete ;)-->
+					<h6> <a href="paquetes.php"><?= utf8_encode($query[$r][0]) ?></a></h6> <br>
+					<!--Nombre Paquete ;)-->
 				</div>
 			</div>
-	<?php
+		<?php
 		}
-	?>
-	
-</div>
-<div class="fullwidth-section semi-background">
-	<div class="fullwidth-bg">
-		<div class="overlay left-aligned">
-			<div class="dt-sc-one-half column first">
-				<div class="dt-support">
-					<h2>Horario comercial</h2>
-					<p>Lunes-Viernes ____________09:00 AM - 08:00 PM<br>
-						Sábado-Domingo _______10:00 AM - 08:00pm PM </p>
-					<span>(855) 503-0450</span>
-				</div>
-			</div>
-		</div>
+		?>
 	</div>
-</div>
-<div class="service-section" id="service">
-	<div class="container">
-		<div class="service-section-head text-center wow fadeInRight" data-wow-delay="0.4s">
-			<h3>Más de Nosotros</h3>
-		</div>
-		<div class="service-section-grids">
-			<div class="col-md-6 service-grid">
-				<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
-					<div class="icon">
-						<i class="s1"></i>
+
+	<div class="plans">
+		<div class="container">
+			<h2 class="heading">Aprovecha: Ofertas Relampago </h2>
+			<!-- pricing table -->
+			<?php
+			// deberian ser 6 (5 PHP) 
+			for ($r = 0; $r < count($paquetesOfertas); $r++) { //crea tarjetas
+			?>
+				<div class="col-md-4 one_third pricing one_third2">
+					<div class="pricing_top">
+						<h6><?= utf8_encode($paquetesOfertas[$r][0]) ?></h6> <br>
+						<!--Nombre Paquete ;)-->
+						<p style="color: white !important;"><sup><?= utf8_encode($paquetesOfertas[$r][4]) ?></sup></p>
+						<!--CATEGORIA ;)-->
+						 
+						<!--PRECIO ;)-->
+						<div style="background-color: red; height:65px">
+						<p style="font-size: 17px !important;">Paquete con Descuento</p>
+						<p style="margin-top: 10px;"><sup>$ <?= utf8_encode($paquetesOfertas[$r][3]) ?>.00</sup> </p> 
+						</div>
+						
 					</div>
-					<div class="icon-text">
-						<h4>Instalaciones</h4>
-						<p>Todo tipo de instalaciones necesarias para el correcto funcionamiento de nuestro servicio</p>
+					<div class="pricing_middle">
+						<ul>
+							<li>Ideal para el hogar</li>
+							<li>Iva Incluido</li>
+							<li>Pagos Mensuales</li>
+							<li>Hasta <?= utf8_encode($paquetesOfertas[$r][1]) ?> ↓↑ Mbps</li>
+						</ul>
 					</div>
-					<div class="clearfix"></div>
+					<div class="pricing_bottom">
+						<a href="#">Contratar</a>
+					</div>
 				</div>
-				<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
-					<div class="icon">
-					</div>
-					<div class="icon-text">
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
-					<div class="icon">
-						<i class="s3"></i>
-					</div>
-					<div class="icon-text">
-						<h4>Soporte en Linea</h4>
-						<p>Has tus pagos mensuales a travez de nuestra plataforma y con nuestros metodos de pago</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="col-md-6 service-grid">
-				<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
-					<div class="icon">
-						<i class="s3"></i>
-					</div>
-					<div class="icon-text">
-						<h4>Métodos de Pago</h4>
-						<p>Paga con targeta, Oxxo o PayPal</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
-					<div class="icon">
-						<i class="s5"></i>
-					</div>
-					<div class="icon-text">
-						<h4>Reparaciones</h4>
-						<p>Reparaciones a culaquier equipo o percance que se tenga con el servicio</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
-					<div class="icon">
-						<i class=""></i>
-					</div>
-					<div class="icon-text">
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
+			<?php
+			}
+			?>
 			<div class="clearfix"></div>
 		</div>
 	</div>
-</div>
-<!--services-->
-<div class="services">
-	<div class="container">
-		<h3><span>¿Por qué elegirnos?</span></h3>
-		<div class="col-md-6 services-grids">
-			<ul class="srevicesgrid_info">
-				<li class="tick">Los unicos en la Zona</li>
-				<li class="tick">Servicio Profesional</li>
-				<li class="tick">Soluciones Personalizadas</li>
-			</ul>
-		</div>
-		<div class="col-md-6 services-grids">
-			<ul class="srevicesgrid_info">
-				<li class="tick">Atencion Personal </li>
-				<li class="tick">Años de Experencia</li>
-				<li class="tick">Equipo de trabajo Profesional</li>
-			</ul>
+
+	<div class="fullwidth-section semi-background">
+		<div class="fullwidth-bg">
+			<div class="overlay left-aligned">
+				<div class="dt-sc-one-half column first">
+					<div class="dt-support">
+						<h2>Horario comercial</h2>
+						<p>Lunes-Viernes ____________09:00 AM - 08:00 PM<br>
+							Sábado-Domingo _______10:00 AM - 08:00pm PM </p>
+						<span>(855) 503-0450</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="services-bottom">
-	<p>Nuestra compañia tiene más de<span>200 clientes </span>en difernetes zonas </p>
-</div>
-<!-- #Footer -->
-<footer>
-	<div class="copyrights">
+	<div class="service-section" id="service">
 		<div class="container">
-			<p>Copyrights &copy; 2020 La Cochera Wisp | Equipo Info</p>
+			<div class="service-section-head text-center wow fadeInRight" data-wow-delay="0.4s">
+				<h3>Más de Nosotros</h3>
+			</div>
+			<div class="service-section-grids">
+				<div class="col-md-6 service-grid">
+					<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
+						<div class="icon">
+							<i class="s1"></i>
+						</div>
+						<div class="icon-text">
+							<h4>Instalaciones</h4>
+							<p>Todo tipo de instalaciones necesarias para el correcto funcionamiento de nuestro servicio</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
+						<div class="icon">
+						</div>
+						<div class="icon-text">
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
+						<div class="icon">
+							<i class="s3"></i>
+						</div>
+						<div class="icon-text">
+							<h4>Soporte en Linea</h4>
+							<p>Has tus pagos mensuales a travez de nuestra plataforma y con nuestros metodos de pago</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-6 service-grid">
+					<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
+						<div class="icon">
+							<i class="s3"></i>
+						</div>
+						<div class="icon-text">
+							<h4>Métodos de Pago</h4>
+							<p>Paga con targeta, Oxxo o PayPal</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
+						<div class="icon">
+							<i class="s5"></i>
+						</div>
+						<div class="icon-text">
+							<h4>Reparaciones</h4>
+							<p>Reparaciones a culaquier equipo o percance que se tenga con el servicio</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="service-section-grid wow bounceIn" data-wow-delay="0.4s">
+						<div class="icon">
+							<i class=""></i>
+						</div>
+						<div class="icon-text">
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
 		</div>
 	</div>
-</footer>
-<!-- /#Footer -->
-<!-- here stars scrolling icon -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		/*
-										var defaults = {
-								  			containerID: 'toTop', // fading element id
-											containerHoverID: 'toTopHover', // fading element hover id
-											scrollSpeed: 1200,
-											easingType: 'linear' 
-								 		};
-										*/
+	<!--services-->
+	<div class="services">
+		<div class="container">
+			<h3><span>¿Por qué elegirnos?</span></h3>
+			<div class="col-md-6 services-grids">
+				<ul class="srevicesgrid_info">
+					<li class="tick">Los unicos en la Zona</li>
+					<li class="tick">Servicio Profesional</li>
+					<li class="tick">Soluciones Personalizadas</li>
+				</ul>
+			</div>
+			<div class="col-md-6 services-grids">
+				<ul class="srevicesgrid_info">
+					<li class="tick">Atencion Personal </li>
+					<li class="tick">Años de Experencia</li>
+					<li class="tick">Equipo de trabajo Profesional</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="services-bottom">
+		<p>Nuestra compañia tiene más de<span>200 clientes </span>en difernetes zonas </p>
+	</div>
+	<!-- #Footer -->
+	<footer>
+		<div class="copyrights">
+			<div class="container">
+				<p>Copyrights &copy; 2020 La Cochera Wisp | Equipo Info</p>
+			</div>
+		</div>
+	</footer>
+	<!-- /#Footer -->
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+											var defaults = {
+									  			containerID: 'toTop', // fading element id
+												containerHoverID: 'toTopHover', // fading element hover id
+												scrollSpeed: 1200,
+												easingType: 'linear' 
+									 		};
+											*/
 
-		$().UItoTop({
-			easingType: 'easeOutQuart'
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
 		});
-
-	});
-</script>
-<!-- //here ends scrolling icon -->
-</body>
+	</script>
+	<!-- //here ends scrolling icon -->
+	</body>
 
 </html>
