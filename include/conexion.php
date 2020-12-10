@@ -68,16 +68,5 @@ class ConexionSql{
 		$this->_Conn->close();
 	}
 }
-// $objBaseDatos=new ConexionSql('localhost','root','','ecommercea');
-// //echo "<hr>";
-
-// //llamar proedimientos almacenados
-// $objBaseDatos->Conectar();
-
-// $objBaseDatos->ConsultaSql("call regresaProductos(100);");
-
-// $objBaseDatos->resultadoSql();
-// $objBaseDatos->CerrarSql();
-// echo "Modificado1";
 ?>
 
