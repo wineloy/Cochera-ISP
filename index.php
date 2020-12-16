@@ -166,7 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</div>
 					<div class="pricing_bottom">
-						<a href="#">Contratar</a>
+						<a href="/login.php">Contratar</a>
 					</div>
 				</div>
 			<?php
