@@ -1,6 +1,6 @@
 -- MariaDB dump 10.17  Distrib 10.4.13-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: WISPCH
+-- Host: localhost    Database: wispch
 -- ------------------------------------------------------
 -- Server version	10.4.13-MariaDB
 
@@ -80,11 +80,9 @@ CREATE TABLE `clientes` (
   `idCliente` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(250) NOT NULL,
   `apellidos` varchar(250) NOT NULL,
-  `edad` int(11) NOT NULL,
   `telefono` varchar(16) DEFAULT NULL,
-  `sexo` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +91,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (1,'ELOY','GARCIA','3531034610'),(4,'ELOY','GARCIA','3531034610'),(5,'ELOY','GARCIA','3531034610'),(6,'ELOY','GARCIA','3531034610'),(7,'ELOY','GARCIA','3531034610'),(8,'ELOY','GARCIA','3531034610'),(9,'ELOY','GARCIA','3531034610'),(10,'ELOY','GARCIA','3531034610'),(11,'','','3531034610'),(12,'','','3531021709'),(13,'','','12324'),(14,'','','12324'),(15,'','','353125'),(16,'','','353125');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +223,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`idUsuario`),
   KEY `idCliente` (`idCliente`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`idCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -233,32 +232,9 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,1,'WINELOY@OUTLOOK.COM','TUPUTAMADRE12'),(2,9,'WINELOsY@OUTLOOK.COM','TUPUsTAMADRE12'),(3,12,'wineloy@gmail.com','');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'WISPCH'
---
-/*!50003 DROP PROCEDURE IF EXISTS `PaquetesConOferta` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PaquetesConOferta`()
-BEGIN
-	SELECT P.nombrepaquete, P.megas, P.descripcion, P.precio, C.Categoria, P.idPaquete
-		from paquetes P inner join categorias C on P.idCategoria = C.idCategoria inner join ofertas O on P.idPaquete =O.idPaquete;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -269,4 +245,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-10 12:54:54
+-- Dump completed on 2020-12-15 23:05:01
