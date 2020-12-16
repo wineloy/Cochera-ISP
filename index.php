@@ -117,12 +117,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <div class="plans">
 	<div class="container">
-
-
 		<!-- pricing table -->
-
 		<h2 class="heading">Estas son nuestras categorias</h2>
-
 		<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->
 		<?php
 		// deberian ser 6 (5 PHP) 

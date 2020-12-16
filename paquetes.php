@@ -171,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														</ul>
 													</div>
 													<div class="pricing_bottom">
-														<a href="#">Contratar</a>
+														<a href="login.html">Contratar</a>
 													</div>
 												</div>
 										<?php
@@ -229,7 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														</ul>
 													</div>
 													<div class="pricing_bottom">
-														<a href="#">Contratar</a>
+														<a href="login.html">Contratar</a>
 													</div>
 												</div>
 										<?php
@@ -283,7 +283,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														</ul>
 													</div>
 													<div class="pricing_bottom">
-														<a href="#">Contratar</a>
+														<a href="login.html">Contratar</a>
 													</div>
 												</div>
 										<?php
@@ -337,13 +337,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														</ul>
 													</div>
 													<div class="pricing_bottom">
-														<a href="#">Contratar</a>
+														<a href="login.html">Contratar</a>
 													</div>
 												</div>
 										<?php
 											}
 										}
-										?>
+										?> 
 
 									</div>
 								</div>

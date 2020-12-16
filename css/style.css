@@ -1345,7 +1345,62 @@ div#breadcrumb_wrapper h6 {
 	font-size:0.8125em;
 	padding: 0.5em;
 }
+.login-right input[type="password"] {
+	border: 1px solid #EEE;
+	outline-color:#1BBC9B;
+	width: 96%;
+	font-size:0.8125em;
+	padding: 0.5em;
+}
 .login-right input[type="submit"] {
+	background: #1BBC9B;
+	color: #FFF;
+	font-size: 1em;
+	padding: 0.7em 1.2em;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border:none;
+	outline:none;
+}
+/**/
+.acount-btn:hover, .login-left input[type="submit"]:hover{
+	background:#000;
+	text-decoration:none;
+	color:#fff;
+}
+.login-left form {
+	padding: 1em 0;
+}
+.login-left form div {
+	padding: 0 0 2em 0;
+}
+.login-left span {
+	color: #555;
+	font-size:1em;
+	padding-bottom: 0.2em;
+	display: block;
+	text-transform: uppercase;
+}
+
+.login-left input[type="password"] {
+	border: 1px solid #EEE;
+	outline-color:#1BBC9B;
+	width: 96%;
+	font-size:0.8125em;
+	padding: 0.5em;
+}
+.login-left input[type="text"] {
+	border: 1px solid #EEE;
+	outline-color:#1BBC9B;
+	width: 96%;
+	font-size:0.8125em;
+	padding: 0.5em;
+}
+.login-left input[type="submit"] {
 	background: #1BBC9B;
 	color: #FFF;
 	font-size: 1em;
@@ -3918,5 +3973,75 @@ p.sub-meta {
 		width: 20%;
 	}
 }
+
+/*Formularios*/
+.form-register {
+	width: 600px;
+	background: white;
+	padding: 30px;
+	margin: auto;
+	margin-top: 10px;
+	border: solid green;
+	border-radius: 4px;
+	font-family: 'calibri';
+	color: white;
+	
+  }
+  
+  .form-register h3 {
+	font-size: 22px;
+	margin-bottom: 20px;
+	color: #000;
+  }
+  
+  .controls {
+	width: 100%;
+	background: white;
+	padding: 10px;
+	border-radius: 4px;
+	margin-bottom: 16px;
+	border: 1px solid #1f53c5;
+	font-family: 'calibri';
+	font-size: 18px;
+	color: white;
+  }
+  
+  .form-register p {
+	height: 40px;
+	text-align: center;
+	font-size: 18px;
+	line-height: 40px;
+  }
+  
+  .form-register a {
+	color: white;
+	text-decoration: none;
+  }
+  
+  .form-register a:hover {
+	color: white;
+	text-decoration: underline;
+  }
+  
+  .form-register .botons {
+	width: 100%;
+	background: green;
+	border: none;
+	padding: 12px;
+	color: white;
+	margin: 16px 0;
+	font-size: 16px;
+  }
+
+  .form-register .botonsa {
+	width: 100%;
+	background: rebeccapurple;
+	border: none;
+	padding: 12px;
+	color: white;
+	margin: 16px 0;
+	font-size: 16px;
+  }
+  
 
 /*--//tabs--*/

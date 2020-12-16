@@ -9,7 +9,6 @@ Paso4:
     Usuario rellena datos de envio 
 Paso 5:
     El usuario realiza el pago
-
 Task:
 Giovanni: 
     Pagina de registro de cliente (Login), (Paso 1)
