@@ -7,7 +7,7 @@ class ConexionSql{
 	private $_Clave; // para administrar la clave de usuario
 	private $_BaseDatos; //Administrar la base de datos 
 	private $_Servidor; //Administrar el servidor
-	private $_ResultadoSql; //almaenar los resultados en forma de arreglo
+	private $_ResultadoSql; //almacenar los resultados en forma de arreglo
 	
 	//construtor de la clase
 	public function __construct($Servidor,$Usuario,$Clave,$Bd)
