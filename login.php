@@ -1,7 +1,9 @@
 <?php
+
 include "./include/conexion.php";
 include "./include/ValidarUsuario.php";
-include "./include/CrearUsuario.php";
+include "./include/Usuarios.php";
+
 if ($_POST) {
 
 	if (isset($_POST["email"]) && isset($_POST["contraseña"])) {
@@ -16,19 +18,15 @@ if ($_POST) {
 	}
 	else{
 
-		print_r($_POST["nombre"]);
-		print_r($_POST["apellidos"]);
-		print_r($_POST["telefono"]);
-		print_r($_POST["Email"]);
-		print_r($_POST["Contraseña"]);
-
-		$crear = new CrearUsuario($_POST["nombre"],$_POST["apellidos"],$_POST["telefono"],$_POST["Email"],$_POST["Contraseña"]);
-		$crear->RegistrarUsuario();
+		$crear = new Usuarios($_POST["nombre"],$_POST["apellidos"],$_POST["telefono"],$_POST["Email"],$_POST["Contraseña"]);
+		if ($crear->RegistrarUsuario() == 1) { // :D
+			session_start();
+			header("location: ./carrito.html");
+		}
 	}
 
 }
 ?>
-
 <!DOCTYPE HTML>
 <html>
 
