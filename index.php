@@ -147,13 +147,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="pricing_top">
 						<h6><?= utf8_encode($paquetesOfertas[$r][0]) ?></h6> <br>
 						<!--Nombre Paquete ;)-->
-						<p style="color: white !important;"><sup><?= utf8_encode($paquetesOfertas[$r][4]) ?></sup></p>
+						<p style="color: white !important;"><sup><?= utf8_encode($paquetesOfertas[$r][3]) ?></sup></p>
 						<!--CATEGORIA ;)-->
 						 
 						<!--PRECIO ;)-->
 						<div style="background-color: red; height:65px">
 						<p style="font-size: 17px !important;">Paquete con Descuento</p>
-						<p style="margin-top: 10px;"><sup>$ <?= utf8_encode($paquetesOfertas[$r][3]) ?>.00</sup> </p> 
+						<p style="margin-top: 10px;"><sup>$ <?= utf8_encode($paquetesOfertas[$r][4]) ?>.00</sup> </p> 
 						</div>
 						
 					</div>
