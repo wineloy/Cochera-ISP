@@ -25,6 +25,10 @@ class Usuarios{
     {
         $cifrada = hash("sha512",$this->pass);
         $query = $this->conexion->ConsultaSql("call crearUsuario('$this->nombre','$this->apellidos','$this->telefono','$this->correo','$cifrada');");
+        if ($query[0][0]==1) {
+            session_start();
+            $_SESSION["email"]= $this->correo;
+         }
         return $query[0][0];
 
     }

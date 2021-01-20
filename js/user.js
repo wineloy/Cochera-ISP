@@ -4,10 +4,7 @@ let loginUserForm = document.querySelector('#loginUserForm');
 
 createUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
     let data = new FormData(createUserForm);
-
-
     fetch('./include/Usuarios.php', {
         method: 'POST',
         body: data
@@ -18,7 +15,22 @@ createUserForm.addEventListener('submit', (e) => {
         }else
              throw("Error en la peticion "+request.statusText);
     })
-    .then(data => console.log(data))
+    .then(data =>{
+        let numero = Number.parseInt(data,10);
+        switch (numero) {
+            case 1:
+                alert("Usuario Registrado ! ");
+                window.location.href = './carrito.php'
+                break;
+            case -1:
+                alert("Este correo ya esta registrado");
+                break;
+            default:
+                alert("ha ocurrido un error desconocido!");
+                location.reload();
+                break;
+        }
+    })
     .catch(error => console.log("error en la peticion " + error));
 
 createUserForm.reset();
@@ -53,6 +65,8 @@ loginUserForm.addEventListener('submit', (e) => {
                 break;
         
             default:
+                alert("ha ocurrido un error desconocido!");
+                location.reload();
                 break;
         }
     })
