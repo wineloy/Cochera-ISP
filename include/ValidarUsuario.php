@@ -1,5 +1,6 @@
 <?php
 
+require_once 'conexion.php';
 class validarUsuario{
 
     private String $email;
@@ -16,11 +17,21 @@ class validarUsuario{
 
     public function Validacion(): int
     {
-        $query = $this->conexion->ConsultaSql("call ValidarUsuario('$this->email','$this->password');");
+        $cifrada =   $cifrada = hash("sha512",$this->password);
+        $query = $this->conexion->ConsultaSql("call ValidarUsuario('$this->email','$cifrada');");
+        
+        if ($query[0][0]==1) {
+           session_start();
+           $_SESSION["email"]= $this->email;
+        }
         return $query[0][0];
+       
     }
 }
-
-/* $obj = new validarUsuario("WINELOY@OUTLOOK.COM","TUPUTAMADRE12");
-var_dump($obj->Validacion()); */
+$email = strtolower($_POST["email"]);
+$pass = $_POST["contraseña"];
+//No es lo mejor
+$validar = new validarUsuario($email,$pass);
+echo $validar->Validacion();
+ 
 

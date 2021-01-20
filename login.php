@@ -1,32 +1,3 @@
-<?php
-
-include "./include/conexion.php";
-include "./include/ValidarUsuario.php";
-include "./include/Usuarios.php";
-
-if ($_POST) {
-
-	if (isset($_POST["email"]) && isset($_POST["contraseña"])) {
-		//controle cuando sea login 
-		$validar = new validarUsuario(strtoupper($_POST["email"]), $_POST["contraseña"]);
-		/* var_dump(strtoupper($_POST["email"])); // si deberia ser mas prueba unitaria :|
-		var_dump($_POST["contraseña"]); */
-		if ($validar->Validacion() == 1) { // :D
-			session_start();
-			header("location: ./carrito.html");
-		}
-	}
-	else{
-
-		$crear = new Usuarios($_POST["nombre"],$_POST["apellidos"],$_POST["telefono"],$_POST["Email"],$_POST["Contraseña"]);
-		if ($crear->RegistrarUsuario() == 1) { // :D
-			session_start();
-			header("location: ./carrito.html");
-		}
-	}
-
-}
-?>
 <!DOCTYPE HTML>
 <html>
 
@@ -125,31 +96,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="login-page">
 			<div class="account_grid">
 				<div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
-					<h3>NUEVOS CLIENTES</h3>
+					<h3>Nuevos Clientes</h3>
 					<p>Crea una nueva cuenta</p>
 					
-					<form action="login.php" method="Post">
+					<form action="login.php" method="Post" id="createUserForm">
 					<div>
 							<span>Nombre<label>*</label></span>
-							<input type="text" name="nombre">
+							<input type="text" name="nombre" required>
 						</div>
 						<div>
 							<span>Apellidos<label>*</label></span>
-							<input type="text" name="apellidos">
+							<input type="text" name="apellidos" required>
 						</div>
 						<div>
 							<span>Numero de Telefono<label>*</label></span>
-							<input type="text" name="telefono">
+							<input type="text" name="telefono" required>
 						</div>
 						<div>
 							<span>Email<label>*</label></span>
-							<input type="text" name="Email">
+							<input type="text" name="email" required>
 						</div>
 						<div>
 							<span>Contraseña<label>*</label></span>
-							<input type="password" name="Contraseña">
+							<input type="password" name="contraseña" required>
 						</div>
-					
 						<input class="acount-btn" type="submit" value="Crear Cuenta">
 					</form>
 				</div>
@@ -159,18 +129,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h3>Inicia Sesión</h3>
 					<p>Si tienes una cuenta, por favor ingresa</p>
 
-					<form action="login.php" method="Post">
+					<form action="login.php" method="Post" id="loginUserForm">
 						<div>
 							<span>Email o numero de teléfono<label>*</label></span>
-							<input type="text" name="email">
+							<input type="text" name="email" required>
 						</div>
 						<div>
 							<span>Contraseña<label>*</label></span>
-							<input type="password" name="contraseña">
+							<input type="password" name="contraseña" required>
 						</div>
 						<input type="submit" value="login">
 						<p> <strong>OR</strong><a href="#"><img src="images/facebook-icon.png"></a> <a href="#"><img src="images/gmail-icon.png" alt=""></a></p>
-						<?php if ($_POST && $validar->Validacion() != 1) echo "<p style='color:red; font-size:20px'>Ups algo salio mal! <p>" ?>
 					</form>
 				</div>
 				<div class="clearfix"> </div>
@@ -204,6 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	});
 </script>
+<script src="js/user.js"></script>
 <!-- //here ends scrolling icon -->
 </body>
 
