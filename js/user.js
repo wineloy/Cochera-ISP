@@ -19,15 +19,31 @@ createUserForm.addEventListener('submit', (e) => {
         let numero = Number.parseInt(data,10);
         switch (numero) {
             case 1:
-                alert("Usuario Registrado ! ");
-                window.location.href = './carrito.php'
+                setTimeout( () => {
+                    window.location.href = './carrito.php';
+                },3500);
+                Swal.fire(
+                    'Usuario registrado correctamente!',
+                    'Continua con tu proceso de compra',
+                    'success'
+                  );
                 break;
             case -1:
-                alert("Este correo ya esta registrado");
+                Swal.fire(
+                    'Verica los datos',
+                    'Este correo esta asociado a un usuario por favor de inicie sesión',
+                    'warning'
+                  );
                 break;
             default:
-                alert("ha ocurrido un error desconocido!");
-                location.reload();
+                setTimeout(()=>{
+                    location.reload();
+                },3000)
+                Swal.fire(
+                    'Ups algo ha ocurrido',
+                    'Tenemos inconvenientes para procesar su solicitud, intente mas tarde',
+                    'question'
+                  );
                 break;
         }
     })
@@ -58,20 +74,41 @@ loginUserForm.addEventListener('submit', (e) => {
                 window.location.href = './carrito.php'
                 break;
             case -1:
-                alert("No existe el correo");
+                Swal.fire(
+                    'No existe este usuario',
+                    'Este correo no se encuentra registrado, por favor registrate primero',
+                    'warning'
+                  );
                 break;
             case -2:
-                alert("usuario incorrecto");
+                Swal.fire(
+                    'Error en tus credenciales',
+                    'Verica que estes ingresando la información correcta',
+                    'error'
+                  );
                 break;
         
             default:
-                alert("ha ocurrido un error desconocido!");
-                location.reload();
+                setTimeout(()=>{
+                    location.reload();
+                },3000)
+                Swal.fire(
+                    'Ups algo ha ocurrido',
+                    'Tenemos inconvenientes para procesar su solicitud, intente mas tarde',
+                    'question'
+                  );
+                //location.reload();
                 break;
         }
     })
     .catch(error => console.log("error en la peticion " + error));
     loginUserForm.reset();
 });
+
+// mascara telefono 
+document.getElementById('telefono').addEventListener('input', function (e) {
+    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+  });
 
 

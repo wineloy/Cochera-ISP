@@ -110,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div>
 							<span>Numero de Telefono<label>*</label></span>
-							<input type="text" name="telefono" required>
+							<input id="telefono" type="text" name="telefono" required>
 						</div>
 						<div>
 							<span>Email<label>*</label></span>
@@ -173,8 +173,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	});
 </script>
-<script src="js/user.js"></script>
 <!-- //here ends scrolling icon -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="js/user.js"></script>
+
 </body>
 
 </html>
