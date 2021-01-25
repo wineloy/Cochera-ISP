@@ -1,7 +1,6 @@
 <?php
 include './include/conexion.php';
 //Hay que tomar en cuenta que esto es una mala practica esta info se debe de almacenar en archivos .env
-$conexion = new ConexionSql('localhost', 'root', '', 'WISPCH');
 $conexion->Conectar();
 //Query 
 $query = $conexion->ConsultaSql("select categoria from categorias");

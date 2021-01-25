@@ -35,8 +35,8 @@ btnAgregar.addEventListener("click", (e) => {
     }
 });
 
+//Cerrado de sesión 
 let cerrarSesion = document.querySelector('#CerrarSesion');
-
 cerrarSesion.addEventListener("click", (e)=>{
     e.preventDefault();
 
@@ -54,14 +54,11 @@ cerrarSesion.addEventListener("click", (e)=>{
           fetch("./include/endSession.php")
           .then(request => request.text())
           .then(data => {
-              window.location.href = './login.php'
-              return console.log(data)
+              window.location.href = './login.php';
+              return console.log(data);
           });
         }
-      })
-
-   
-
+      });
 });
 
 

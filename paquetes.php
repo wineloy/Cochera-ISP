@@ -3,7 +3,6 @@
 // Return query SQL 
 include './include/conexion.php';
 //Hay que tomar en cuenta que esto es una mala practica esta info se debe de almacenar en archivos .env
-$conexion = new ConexionSql('localhost', 'root', '', 'WISPCH');
 $conexion->Conectar();
 //Query 
 $query = $conexion->ConsultaSql("SELECT P.nombrepaquete, P.megas, P.descripcion, P.precio, C.Categoria, P.idPaquete
