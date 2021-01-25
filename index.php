@@ -309,6 +309,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		});
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="js/alertIndex.js"></script>
 	<!-- //here ends scrolling icon -->
 	</body>
 
