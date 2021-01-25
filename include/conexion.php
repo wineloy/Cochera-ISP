@@ -68,5 +68,9 @@ class ConexionSql{
 		$this->_Conn->close();
 	}
 }
+// Esto se hace para heredar la conexion con env
+$conexion = new ConexionSql('localhost', 'root', '', 'WISPCH');
 ?>
+
+
 

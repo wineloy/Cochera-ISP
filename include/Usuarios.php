@@ -9,9 +9,9 @@ class Usuarios{
     private String $pass;
     private $conexion;
 
-    public function __construct(string $nombre, String $apellidos, String $telefono, String $correo, String $contrasena)
+    public function __construct(ConexionSql $conexion, string $nombre, String $apellidos, String $telefono, String $correo, String $contrasena)
     {
-        $this->conexion = new ConexionSql('localhost', 'root', '', 'WISPCH');
+        $this->conexion = $conexion;
         $this->conexion->Conectar();
         $this->nombre=$nombre;
         $this->apellidos=$apellidos;
@@ -29,6 +29,7 @@ class Usuarios{
             session_start();
             $_SESSION["email"]= $this->correo;
          }
+        $this->conexion->CerrarSql();
         return $query[0][0];
 
     }
@@ -41,6 +42,6 @@ $telefono = $_POST["telefono"];
 $email = strtolower($_POST["email"]);
 $password = $_POST["contraseña"];
 
-$crearUsuario = new Usuarios($nombre, $apellidos, $telefono, $email, $password);
+$crearUsuario = new Usuarios($conexion,$nombre, $apellidos, $telefono, $email, $password);
 $id = $crearUsuario->RegistrarUsuario();
 echo $id;

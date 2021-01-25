@@ -7,11 +7,11 @@ class validarUsuario{
     private String $password;
     private $conexion;
 
-    public function __construct(String $email, String $contraseña)
+    public function __construct(ConexionSql $conexion, String $email, String $contraseña)
     {
         $this->email=$email;
         $this->password=$contraseña;
-        $this->conexion = new ConexionSql('localhost', 'root', '', 'WISPCH');
+        $this->conexion = $conexion;
         $this->conexion->Conectar();
     }
 
@@ -31,7 +31,7 @@ class validarUsuario{
 $email = strtolower($_POST["email"]);
 $pass = $_POST["contraseña"];
 //No es lo mejor
-$validar = new validarUsuario($email,$pass);
+$validar = new validarUsuario($conexion,$email,$pass);
 echo $validar->Validacion();
  
 
