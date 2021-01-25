@@ -124,53 +124,61 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--Formulario-->
 		<form id="datosCarrito">
 
-          <div class="form-row">
-            <div class="form-group col-sm-12 col-md-6">
-              <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?= $query[0][0]?>">
-            </div>
-            <div class="form-group col-sm-12 col-md-6">
-              <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="<?= $query[0][1]?>">
-            </div>
-            <div class="form-group col-sm-12 col-md-6">
-              <input type="tel" class="form-control" name="telefono" placeholder="Telefono"value="<?= $query[0][2]?>">
-            </div>
-            <div class="form-group col-sm-12 col-md-6">
-              <input type="email" class="form-control" name="email" placeholder="Correo Electronico" value="<?= $query[0][3]?>">
-            </div>
-            <div class="col-12">
-              <p class=" my-2 text-center spacing">Primera instalacion</p>
-            </div>
-            <div class="form-group col-sm-12 col-md-6">
-              <select name="paquete" class="form-control" id="PaqueteSeleccionado1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="form-group col-sm-12 col-md-6">
-              <input name="precio" type="text" class="form-control" disabled placeholder="Precio">
-            </div>
+			<div class="form-row">
+				<div class="form-group col-sm-12 col-md-6">
+					<input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?= $query[0][0] ?>">
+				</div>
+				<div class="form-group col-sm-12 col-md-6">
+					<input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="<?= $query[0][1] ?>">
+				</div>
+				<div class="form-group col-sm-12 col-md-6">
+					<input type="tel" class="form-control" name="telefono" placeholder="Telefono" value="<?= $query[0][2] ?>">
+				</div>
+				<div class="form-group col-sm-12 col-md-6">
+					<input type="email" class="form-control" name="email" placeholder="Correo Electronico" value="<?= $query[0][3] ?>">
+				</div>
+				<div class="col-12">
+					<p class=" my-2 text-center spacing">Primera instalacion</p>
+				</div>
+				<div class="form-group col-sm-12 col-md-6">
+					<select name="paquete" class="form-control" id="PaqueteSeleccionado1">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<div class="form-group col-sm-12 col-md-6">
+					<input name="precio" type="text" class="form-control" disabled placeholder="Precio">
+				</div>
 
-            <!-- Se generaran con JS pd No estoy orgulloso de esto :'( -->
-            <div id="titulo" class="spacing"></div>
-            <div id="adicionalPaquete"></div>
-            <div id="adicionalPrecio"></div>
-			
-            <div class="form-group col-sm-12 col-md-12">
-              <div class=" flex ">
-                <input id="btnAgregar" type="button" class="boton form-control btn btn-success" value="Agregar">
-              </div>
-            </div>
-          
-            <div class="form-group col-sm-12 col-md-12">
-              <div class="flex">
-                <input type="button" class="boton form-control btn btn-primary" value="Todo esta correcto!">
-              </div>
-            </div>
-          </div>
-        </form>
+				<!-- Se generaran con JS pd No estoy orgulloso de esto :'( -->
+				<div id="titulo" class="spacing"></div>
+				<div id="adicionalPaquete"></div>
+				<div id="adicionalPrecio"></div>
+
+				<div class="form-group col-sm-12 col-md-6">
+					<div class=" flex ">
+						<input id="btnAgregar" type="button" class="boton form-control btn btn-success" value="Agregar">
+					</div>
+				</div>
+
+				<div class="form-group col-sm-12 col-md-6">
+					<div class="flex">
+						<input type="button" class="boton form-control btn btn-primary" value="Siguiente">
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- Boton de cerrado de sesión, este nunca caduca -->
+		<div class="row">
+			<div class="form-group col-sm-12 col-md-12">
+				<div class="flex">
+					<input id="CerrarSesion" type="button" class="boton form-control btn btn-info" value="Cerrar Sesión">
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <!--services-->

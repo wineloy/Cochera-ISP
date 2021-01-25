@@ -33,30 +33,36 @@ btnAgregar.addEventListener("click", (e) => {
             'warning'
           );
     }
-    let PaqueteSeleccionado1 = document.querySelector("#PaqueteSeleccionado1");
-
-console.log(PaqueteSeleccionado1.value + "Este paquete")
-
-    let datosCarrito = document.querySelector('#datosCarrito');
-
-    let formCarrito = new FormData(datosCarrito);
-    formCarrito.forEach(element => {
-        console.log(element);
-    });
 });
 
-/* let cerrarSesion = document.querySelector('#CerrarSesion');
+let cerrarSesion = document.querySelector('#CerrarSesion');
 
 cerrarSesion.addEventListener("click", (e)=>{
     e.preventDefault();
-    fetch("./include/endSession.php")
-    .then(request => request.text())
-    .then(data => {
-        window.location.href = './login.php'
-        return console.log(data)
-    });
 
-}); */
+    Swal.fire({
+        title: '¿Esta seguro de querer cerrar sesión ?',
+        text: "Puede continuar con este proceso iniciando sesión nuevamente",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'SI',
+        cancelButtonText: 'NO',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch("./include/endSession.php")
+          .then(request => request.text())
+          .then(data => {
+              window.location.href = './login.php'
+              return console.log(data)
+          });
+        }
+      })
+
+   
+
+});
 
 
 
