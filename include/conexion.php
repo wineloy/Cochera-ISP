@@ -1,5 +1,4 @@
 <?php
-require "./vendor/autoload.php";
 /*Clase para conectarse a una fuente de datos   */
 class ConexionSql{
 	// Datos privados
@@ -69,12 +68,9 @@ class ConexionSql{
 		$this->_Conn->close();
 	}
 }
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-$variable = $_ENV['DB_HOST'];
+
 
 // Esto se hace para heredar la conexion con env
-$conexion =
- new ConexionSql($_ENV['DB_HOST'],$_ENV['DB_USER'], $_ENV['DB_PASSWD'],$_ENV['DB_NAME']);
+$conexion = new ConexionSql("localhost","root", "","WISPCH");
 ?>
 
