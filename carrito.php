@@ -6,7 +6,6 @@ if (!isset($_SESSION["email"])) {
 	header("location: login.php");
 } else {
 	$email =  $_SESSION["email"];
-	$conexion = new ConexionSql("localhost", "root", "", "WISPCH");
 	$conexion->Conectar();
 	$query = $conexion->ConsultaSql("call datosFormularioCompra('$email')");
 	if ($query[0][0] == -1) {
@@ -15,9 +14,9 @@ if (!isset($_SESSION["email"])) {
 		$query[0][2] = "Error";
 		header("location: login.php");
 	}
+	$conexion->CerrarSql();
 }
 //session_destroy();
-
 ?>
 
 
@@ -116,35 +115,62 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="clearfix"> </div>
 
-<div class="container">
-	<div class="row">
-		
-	<div style="display: flex; justify-content: space-between;">
-		<div style="padding: 2.5%; margin: 1.5%; background: #f5f5f5; color: #333;" class=""><?php echo $email?></div>
-		<div  style=" padding: 2.5% ; margin: 1.5%; background: #f5f5f5; color: #333;"><a id="CerrarSesion" href="">Cerrar Sesion</a> </div>
-	</div>
-		
-	</div>
-</div>
-
 <!-- Header Ends Here -->
 <div class="about_grid_top">
-	<div class="container">
+	<div style="border: 2px solid #3E518E;box-shadow: 10px 10px 5px 0px rgba(62,81,142,1);" class="container">
 		<div class="our-head text-center">
-			<h3>Finaliza tu compra </h3>
+			<h4 class="spacing">Verifique sus datos</h4>
 		</div>
 		<!--Formulario-->
-		<section class="form-register">
-			<h3>Si desea agragar paquetes adicionales</h3>
-			<h3>Hagalo aquí</h3>
-			<input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su Nombre" value="<?php echo $query[0][0] ?>">
-			<input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido" value="<?php echo $query[0][1] ?>">
-			<input class="controls" type="text" name="telefono" id="Telefono" placeholder="Telefono" value="<?php echo $query[0][2] ?>">
-			<input class="controls" type="text" name="paquete" id="paquete" placeholder="Elige Paquete">
-			<input class="controls" type="text" name="precio" id="correo" placeholder="Precio">
-			<input class="botonsa" type="submit" value="Agregar">
-			<input class="botons" type="submit" value="Registrar">
-		</section>
+		<form id="datosCarrito">
+
+          <div class="form-row">
+            <div class="form-group col-sm-12 col-md-6">
+              <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?= $query[0][0]?>">
+            </div>
+            <div class="form-group col-sm-12 col-md-6">
+              <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="<?= $query[0][1]?>">
+            </div>
+            <div class="form-group col-sm-12 col-md-6">
+              <input type="tel" class="form-control" name="telefono" placeholder="Telefono"value="<?= $query[0][2]?>">
+            </div>
+            <div class="form-group col-sm-12 col-md-6">
+              <input type="email" class="form-control" name="email" placeholder="Correo Electronico" value="<?= $query[0][3]?>">
+            </div>
+            <div class="col-12">
+              <p class=" my-2 text-center spacing">Primera instalacion</p>
+            </div>
+            <div class="form-group col-sm-12 col-md-6">
+              <select name="paquete" class="form-control" id="PaqueteSeleccionado1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-12 col-md-6">
+              <input name="precio" type="text" class="form-control" disabled placeholder="Precio">
+            </div>
+
+            <!-- Se generaran con JS pd No estoy orgulloso de esto :'( -->
+            <div id="titulo" class="spacing"></div>
+            <div id="adicionalPaquete"></div>
+            <div id="adicionalPrecio"></div>
+			
+            <div class="form-group col-sm-12 col-md-12">
+              <div class=" flex ">
+                <input id="btnAgregar" type="button" class="boton form-control btn btn-success" value="Agregar">
+              </div>
+            </div>
+          
+            <div class="form-group col-sm-12 col-md-12">
+              <div class="flex">
+                <input type="button" class="boton form-control btn btn-primary" value="Todo esta correcto!">
+              </div>
+            </div>
+          </div>
+        </form>
 	</div>
 </div>
 <!--services-->
@@ -196,6 +222,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 </script>
 <!-- //here ends scrolling icon -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="./js/cart.js"></script>
 </body>
 
