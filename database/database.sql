@@ -1,8 +1,8 @@
--- MariaDB dump 10.17  Distrib 10.4.13-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.18  Distrib 10.4.17-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: wispch
+-- Host: localhost    Database: WISPCH
 -- ------------------------------------------------------
--- Server version	10.4.13-MariaDB
+-- Server version	10.4.17-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -82,7 +82,7 @@ CREATE TABLE `clientes` (
   `apellidos` varchar(250) NOT NULL,
   `telefono` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +91,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'ELOY','GARCIA','3531034610'),(4,'ELOY','GARCIA','3531034610'),(5,'ELOY','GARCIA','3531034610'),(6,'ELOY','GARCIA','3531034610'),(7,'ELOY','GARCIA','3531034610'),(8,'ELOY','GARCIA','3531034610'),(9,'ELOY','GARCIA','3531034610'),(10,'ELOY','GARCIA','3531034610'),(11,'','','3531034610'),(12,'','','3531021709'),(13,'','','12324'),(14,'','','12324'),(15,'','','353125'),(16,'','','353125');
+INSERT INTO `clientes` VALUES (1,'ELOY','GARCIA','3531034610'),(4,'ELOY','GARCIA','3531034610'),(5,'ELOY','GARCIA','3531034610'),(6,'ELOY','GARCIA','3531034610'),(7,'ELOY','GARCIA','3531034610'),(8,'ELOY','GARCIA','3531034610'),(9,'ELOY','GARCIA','3531034610'),(10,'ELOY','GARCIA','3531034610'),(11,'','','3531034610'),(12,'','','3531021709'),(13,'','','12324'),(14,'','','12324'),(15,'','','353125'),(16,'','','353125'),(17,'Eloy','Garcia Ceja','353-103-4610'),(18,'comunicacion','Garcia','+523531034610'),(19,'comunicacion','Garcia','+523531034610'),(20,'comunicacion','Garcia','+523531034610'),(21,'Eloy','Garcia','+1 23531034610'),(22,'Eloy','Garcia','+1 23531034610'),(23,'Eloy','Garcia','+1 23531034610'),(24,'Eloy','Garcia','+523531034610'),(25,'Eloy','Garcia','+523531034610'),(26,'Eloy','Garcia','+523531034610'),(27,'comunicacion','Garcia','+523531034610'),(28,'Eloy','Garcia','(523) 531-0346'),(29,'comunicacion','Garcia','(523) 531-0346'),(30,'Giovanni','Hernandez','(353) 123-4567'),(31,'Eloy','Garcia','(523) 531-0346'),(32,'Eloy','Garcia','(523) 531-0346'),(33,'Eloy','Garcia','(523) 531-0346'),(34,'Eloy','Garcia','(523) 531-0346');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +223,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`idUsuario`),
   KEY `idCliente` (`idCliente`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,9 +232,157 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,1,'WINELOY@OUTLOOK.COM','TUPUTAMADRE12'),(2,9,'WINELOsY@OUTLOOK.COM','TUPUsTAMADRE12'),(3,12,'wineloy@gmail.com','');
+INSERT INTO `usuarios` VALUES (1,1,'WINELOY@OUTLOOK.COM','TUPUTAMADRE12'),(2,9,'WINELOsY@OUTLOOK.COM','TUPUsTAMADRE12'),(4,17,'wineloy@yahoo.com.mx','ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413'),(8,27,'wineloy@yahoo.com','e13efc991a9bf44bbb4da87cdbb725240184585ccaf270523170e008cf2a3b85f45f86c3da647f69780fb9e971caf5437b3d06d418355a68c9760c70a31d05c7'),(9,30,'gio@gmail.com','ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413'),(10,34,'wineloy@yahoo.com.mxw','ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'WISPCH'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `CrearPaquetes` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearPaquetes`(
+	in _idCategoria integer,
+    in _nombrePaquete varchar(100),
+    in _velocidad varchar(100), #megas
+    in _descripcion text,
+    in _imagen varchar(100),
+    in precio decimal(10,2)
+)
+BEGIN
+    declare paquete integer;
+    start transaction;
+		insert into paquetes() Values (null, _idCategoria,  _nombrePaquete, _velocidad,  _descripcion, _imagen, precio);
+		select idPaquete from paquetes order by idPaquete desc limit 1 into paquete; #Tengo el ultimo registro de paquete
+		insert into Ofertas() values(null, paquete, 0, 0); 
+	commit;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `crearUsuario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crearUsuario`(
+	in _nombre varchar(150),
+    in _apellidos varchar(250),
+    in _telefono varchar(20),
+    in _email varchar(250),
+    in _password text
+)
+BEGIN
+
+	DECLARE idUsuario integer;
+    START transaction;
+    INSERT INTO CLIENTES () VALUES(NULL,_nombre, _apellidos, _telefono);
+	SELECT IDCLIENTE FROM CLIENTES ORDER BY IDCLIENTE DESC LIMIT 1 INTO idUsuario;
+    IF exists(SELECT 1 FROM USUARIOS WHERE EMAIL = _email) <> 1 THEN 
+		INSERT INTO USUARIOS () VALUES (NULL, idUsuario,  _email, _password);
+		SELECT 1; #sE REGISTRO 
+    ELSE
+		SELECT -1; #CORREO REPETIDO
+	END IF;
+    COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `datosFormularioCompra` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `datosFormularioCompra`(
+in _email varchar(250)
+)
+BEGIN
+ if exists(select 1 from usuarios where email = _email ) = 1 then
+	select C.nombre, C.apellidos, C.telefono, U.email from clientes C inner join usuarios U on (U.idCliente=C.idCliente)
+    where U.email= _email LIMIT 1;
+ else
+	select -1 ;# no existe este correo;
+ end if;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PaquetesConOferta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PaquetesConOferta`()
+BEGIN
+	select P.nombrepaquete, P.megas, P.descripcion, C.Categoria, P.precio, O.estado from paquetes P inner join ofertas O on (P.idPaquete = O. idPaquete) 
+	inner join categorias C on (P.idCategoria= C.idCategoria);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ValidarUsuario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ValidarUsuario`(
+	in _email varchar(250),
+    in _password text
+)
+BEGIN
+
+	if exists (select 1 from usuarios where email = _email ) = 1 then 
+		if exists(select 1 from usuarios where contraseña = _password) = 1 then 
+			select 1; #Te do la autentificacion 
+		else 
+			select -2; #Contraseña erronea
+		end if;
+    else
+		select -1; #Este email no existe
+	end if;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -245,4 +393,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-15 23:05:01
+-- Dump completed on 2021-01-25 11:45:02
