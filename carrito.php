@@ -14,6 +14,8 @@ if (!isset($_SESSION["email"])) {
 		$query[0][2] = "Error";
 		header("location: login.php");
 	}
+
+	$paquetes = $conexion->ConsultaSql("call getPaquetes();");
 	$conexion->CerrarSql();
 }
 //session_destroy();
@@ -135,22 +137,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="tel" class="form-control" name="telefono" placeholder="Telefono" value="<?= $query[0][2] ?>">
 				</div>
 				<div class="form-group col-sm-12 col-md-6">
-					<input type="email" class="form-control" name="email" placeholder="Correo Electronico" value="<?= $query[0][3] ?>">
+					<input type="email" class="form-control" name="email" placeholder="Correo Electronico" value="<?= $query[0][3] ?>" readonly>
 				</div>
 				<div class="col-12">
 					<p class=" my-2 text-center spacing">Primera instalacion</p>
 				</div>
-				<div class="form-group col-sm-12 col-md-6">
+				<div id="paquete" class="form-group col-sm-12 col-md-6">
 					<select name="paquete" class="form-control" id="PaqueteSeleccionado1">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
+					<?php
+						for($r = 0; $r < count($paquetes); $r++)
+							echo '<option value='.$paquetes[$r][0].'>'.	$paquetes[$r][1].'</option>';
+							
+					?>
 					</select>
 				</div>
 				<div class="form-group col-sm-12 col-md-6">
-					<input name="precio" type="text" class="form-control" disabled placeholder="Precio">
+					<input value="100" name="precio" type="text" class="form-control" readonly placeholder="Precio">
 				</div>
 
 				<!-- Se generaran con JS pd No estoy orgulloso de esto :'( -->
@@ -166,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<div class="form-group col-sm-12 col-md-6">
 					<div class="flex">
-						<input type="button" class="boton form-control btn btn-primary" value="Siguiente">
+						<input id="btnSiguiente" type="button" class="boton form-control btn btn-primary" value="Siguiente">
 					</div>
 				</div>
 			</div>

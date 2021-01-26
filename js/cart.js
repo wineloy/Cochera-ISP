@@ -1,8 +1,11 @@
 // pintado de formulario 
+let formulario = document.querySelector("#datosCarrito");
 let btnAgregar = document.querySelector("#btnAgregar");
 let adicionalTitulo = document.querySelector("#titulo");
 let adicionalPaquete = document.querySelector("#adicionalPaquete");
 let adicionalPrecio = document.querySelector("#adicionalPrecio");
+let copiado = document.querySelector("#paquete");
+copiado.setAttribute("name","paquete2");
 
 btnAgregar.addEventListener("click", (e) => {
     e.preventDefault();
@@ -11,15 +14,8 @@ btnAgregar.addEventListener("click", (e) => {
     adicionalPrecio.setAttribute("class", "form-group col-sm-12 col-md-6");
     let contador = 1;
     let titulo = ` <p class=" my-2 text-center spacing">Segunda instalacion</p>`;
-    let paquete = `
-    <select name="paquete2" class="form-control" id="exampleFormControlSelect1">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select>`;
-    let precio = ` <input type="text" class="form-control" disabled placeholder="Precio">`;
+    let paquete = copiado.innerHTML;
+    let precio = ` <input type="text" class="form-control" readonly placeholder="Precio">`;
     if (adicionalTitulo.textContent === "") {
         adicionalTitulo.innerHTML += titulo;
         adicionalPaquete.innerHTML += paquete;
@@ -60,6 +56,17 @@ cerrarSesion.addEventListener("click", (e)=>{
         }
       });
 });
+
+//
+let btnSiguiente = document.querySelector("#btnSiguiente");
+
+btnSiguiente.addEventListener("click", e =>{
+  e.preventDefault();
+  let data = new FormData(formulario);
+  data.forEach(element => {
+    console.log(element);
+  })
+})
 
 
 
