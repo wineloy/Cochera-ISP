@@ -164,7 +164,7 @@ CREATE TABLE `ofertas` (
   PRIMARY KEY (`idOferta`),
   KEY `idPaquete` (`idPaquete`),
   CONSTRAINT `ofertas_ibfk_1` FOREIGN KEY (`idPaquete`) REFERENCES `paquetes` (`idPaquete`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +173,7 @@ CREATE TABLE `ofertas` (
 
 LOCK TABLES `ofertas` WRITE;
 /*!40000 ALTER TABLE `ofertas` DISABLE KEYS */;
-INSERT INTO `ofertas` VALUES (4,1,10,1),(5,7,2,1);
+INSERT INTO `ofertas` VALUES (8,10,10,1),(9,11,0,0),(11,13,18,1),(12,14,0,0),(13,15,15,1),(14,16,0,0),(15,17,10,1);
 /*!40000 ALTER TABLE `ofertas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,10 +192,11 @@ CREATE TABLE `paquetes` (
   `descripcion` text DEFAULT NULL,
   `imagen` varchar(100) DEFAULT NULL,
   `precio` decimal(10,0) DEFAULT NULL,
+  `descuento` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`idPaquete`),
   KEY `idCategoria` (`idCategoria`),
   CONSTRAINT `paquetes_ibfk_1` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`idCategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +205,7 @@ CREATE TABLE `paquetes` (
 
 LOCK TABLES `paquetes` WRITE;
 /*!40000 ALTER TABLE `paquetes` DISABLE KEYS */;
-INSERT INTO `paquetes` VALUES (1,1,'ELRUBIOS','20','enfocado a los Streamings',NULL,600),(2,1,'PLAY','10','Enfocado al gamer casual',NULL,450),(3,3,'Business initial','40','Enfocado a pequeñas empresas',NULL,1500),(4,3,'Premiun','100','Enfocado a empresas medianas ',NULL,4000),(5,4,'Family ','15','Enfocado a la familia ',NULL,350),(6,4,'Series And Movies','20','Enfocado para los cinefilos',NULL,500),(7,2,'Ofimatica','5','Funciones basicas',NULL,300);
+INSERT INTO `paquetes` VALUES (10,1,'ELRUBIOS','20','Enfocado a los Streamings','',600,540.00),(11,1,'PLAY','10','Enfocado al Gamer Casual',NULL,450,450.00),(13,3,'Business initial','40','Enfocado a pequeñas empresas',NULL,150,123.00),(14,3,'Premium','100','Enfocado a empresas medianas',NULL,4000,4000.00),(15,4,'Family','15','Enfocado a la familia',NULL,350,297.50),(16,4,'Series And Movies','20','Enfocado para los cinefilos',NULL,500,500.00),(17,2,'Ofimatica','5','Realiza sus actividades diarias',NULL,300,270.00);
 /*!40000 ALTER TABLE `paquetes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -332,7 +333,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `PaquetesConOferta` */;
+/*!50003 DROP PROCEDURE IF EXISTS `getPaquetes` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -342,10 +343,57 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PaquetesConOferta`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getPaquetes`()
 BEGIN
-	select P.nombrepaquete, P.megas, P.descripcion, C.Categoria, P.precio, O.estado from paquetes P inner join ofertas O on (P.idPaquete = O. idPaquete) 
-	inner join categorias C on (P.idCategoria= C.idCategoria);
+	
+    #Verifico que existan paquetes en la base de datos
+    if exists (select COUNT(idPaquete) FROM paquetes) > 0 then 
+		select P. IdPaquete, P.nombrepaquete, P.megas, P.descripcion, C.Categoria, P.precio, P.descuento as 'Precio Con descuento', O.estado, O.Porcentaje from paquetes P inner join ofertas O on (P.idPaquete = O. idPaquete) 
+		inner join categorias C on (P.idCategoria= C.idCategoria); 
+	else 
+		select -1; # no existen paquetes registrados
+	end if;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `registrarPaquete` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registrarPaquete`(
+	in _idCategoria integer,
+    in _nombrepaquete varchar(100),
+    in _megas varchar(100),
+    in _descripcion text,
+    in imagen varchar (100),
+    in precio decimal (10,2),
+    in _porcentaje decimal(10,2)
+)
+BEGIN
+
+	declare ultimoPaquete integer;
+    start transaction;
+		#inserto paquete 
+		insert into paquetes () values (null, _idCategoria, _nombrepaquete, _megas, _descripcion, imagen, precio );
+			#obtengo el ultimo ID generado 
+			select idPaquete from paquetes order by idPaquete DESC LIMIT 1 INTO ultimoPaquete;
+		#valido si el porcentaje es mayor a 0 
+        #Estado 0 = false 1 = true; 
+		if ( _porcentaje > 0) then  
+			insert into ofertas() values (null, ultimoPaquete, _porcentaje, 1);
+		else 
+			insert into ofertas() values (null, ultimoPaquete, 0, 0);
+		end if;
+        commit;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -393,4 +441,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-25 11:45:02
+-- Dump completed on 2021-01-25 20:32:56
