@@ -5,10 +5,7 @@ include './include/conexion.php';
 //Hay que tomar en cuenta que esto es una mala practica esta info se debe de almacenar en archivos .env
 $conexion->Conectar();
 //Query 
-$query = $conexion->ConsultaSql("SELECT P.nombrepaquete, P.megas, P.descripcion, P.precio, C.Categoria, P.idPaquete
-		from paquetes P inner join categorias C on P.idCategoria = C.idCategoria ;");
-
-$oferta = $conexion->ConsultaSql("SELECT idPaquete from ofertas ;"); 
+$paquetes = $conexion->ConsultaSql("call getPaquetes();");
 
 $conexion->CerrarSql();
 #var_dump(count($query[0])); // 7 filas * 5 columnas   
@@ -117,7 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="middile-inner-con">
 			<div class="tab-main mx-auto">
 				<input id="tab1" type="radio" name="tabs" checked>
-				<label for="tab1"> GAMER</label>
+				<label for="tab1">GAMER</label>
 
 				<input id="tab2" type="radio" name="tabs">
 				<label for="tab2"> BÁSICO</label>
@@ -140,37 +137,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->
 										<?php
 										// deberian ser 6 (5 PHP) 
-										for ($r = 0; $r < count($query); $r++) { //crea tarjetas
-											if ($query[$r][4] == "GAMER") {
+										for ($r = 0; $r < count($paquetes); $r++) { //crea tarjetas
+											if ($paquetes[$r][4] == "GAMER") {
 
 										?>
 												<div class="col-md-4 one_third pricing one_third2 ">
 													<div class="pricing_top">
-														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
+														<h6><?= utf8_encode($paquetes[$r][1]) ?></h6> <br>
 														<!--Nombre Paquete ;)-->
-														<p style="color: white !important;"><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
+														<p style="color: white !important;"><sup><?= utf8_encode($paquetes[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
-														<!--PRECIO ;)-->
 														<?php 
-															if ($query[$r][5] == $oferta[0][0]) {
+															if ($paquetes[$r][7] == 1) {
 																echo '<div style="background-color: red; height:65px">
 																<p style="font-size: 17px !important;">Paquete con Descuento</p>
-																<p style="margin-top: 10px;"><sup>$'. utf8_encode($query[$r][3]).'.00</sup> </p> 
+																<p style="margin-top: 10px;"><sup>$'. utf8_encode($paquetes[$r][6]).'</sup> </p> 
 																</div>';
 															}
+															else{
+																echo '<div style="height: 65px;"> <p style="color: white !important;"><sup> $ '. utf8_encode($paquetes[$r][6]).'</sup></p> </div>';
+															}
+
 														?>
+														<!--PRECIO ;)-->
+														 
 													</div>
 													<div class="pricing_middle">
 														<ul>
-															<li><?= $query[$r][2] ?></li>
+															<li><?= $paquetes[$r][3] ?></li>
 															<li>Iva Incluido</li>
 															<li>Pagos Mensuales</li>
-															<li>Hasta <?= utf8_encode($query[$r][1]) ?> ↓↑ Mbps</li>
+															<li>Hasta <?= utf8_encode($paquetes[$r][2]) ?> ↓↑ Mbps</li>
 															<!--Velocidad ;)-->
 														</ul>
 													</div>
 													<div class="pricing_bottom">
-														<a href="login.html">Contratar</a>
+														<a href="login.php">Contratar</a>
 													</div>
 												</div>
 										<?php
@@ -196,45 +198,51 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->
 										<?php
 										// deberian ser 6 (5 PHP) 
+										for ($r = 0; $r < count($paquetes); $r++) { //crea tarjetas
+											if ($paquetes[$r][4] == "BASICO") {
 
-										for ($r = 0; $r < count($query); $r++) { //crea tarjetas
-											if ($query[$r][4] == "BASICO") {
 										?>
-
-												<div class="col-md-4 one_third pricing one_third2">
+												<div class="col-md-4 one_third pricing one_third2 ">
 													<div class="pricing_top">
-														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
+														<h6><?= utf8_encode($paquetes[$r][1]) ?></h6> <br>
 														<!--Nombre Paquete ;)-->
-														<p><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
+														<p style="color: white !important;"><sup><?= utf8_encode($paquetes[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
-														<!--PRECIO ;)-->
 														<?php 
-															if ($query[$r][5] == $oferta[1][0]) {
+															if ($paquetes[$r][7] == 1) {
 																echo '<div style="background-color: red; height:65px">
 																<p style="font-size: 17px !important;">Paquete con Descuento</p>
-																<p style="margin-top: 10px;"><sup>$'. utf8_encode($query[$r][3]).'.00</sup> </p> 
+																<p style="margin-top: 10px;"><sup>$'. utf8_encode($paquetes[$r][6]).'</sup> </p> 
 																</div>';
 															}
-														?>
+															else{
+																echo '<div style="height: 65px;"> <p style="color: white !important;"><sup> $ '. utf8_encode($paquetes[$r][6]).'</sup></p> </div>';
+															}
 
+														?>
+														<!--PRECIO ;)-->
+														 
 													</div>
 													<div class="pricing_middle">
 														<ul>
-															<li><?= $query[$r][2] ?></li>
+															<li><?= $paquetes[$r][3] ?></li>
 															<li>Iva Incluido</li>
 															<li>Pagos Mensuales</li>
-															<li>Hasta <?= utf8_encode($query[$r][1]) ?> ↓↑ Mbps</li>
+															<li>Hasta <?= utf8_encode($paquetes[$r][2]) ?> ↓↑ Mbps</li>
 															<!--Velocidad ;)-->
 														</ul>
 													</div>
 													<div class="pricing_bottom">
-														<a href="login.html">Contratar</a>
+														<a href="login.php">Contratar</a>
 													</div>
 												</div>
 										<?php
 											}
 										}
 										?>
+
+										<!--FIN-->
+									
 									</div>
 								</div>
 							</div>
@@ -247,48 +255,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="text-info-sec">
 								<div class="service-in text-left">
 									<div class="card">
-										<?php
+									<?php
 										// deberian ser 6 (5 PHP) 
+										for ($r = 0; $r < count($paquetes); $r++) { //crea tarjetas
+											if ($paquetes[$r][4] == "EMPRESAS") {
 
-										for ($r = 0; $r < count($query); $r++) { //crea tarjetas
-											if ($query[$r][4] == "EMPRESAS") {
 										?>
-
-												<div class="col-md-4 one_third pricing one_third2">
+												<div class="col-md-4 one_third pricing one_third2 ">
 													<div class="pricing_top">
-														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
+														<h6><?= utf8_encode($paquetes[$r][1]) ?></h6> <br>
 														<!--Nombre Paquete ;)-->
-														<p><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
+														<p style="color: white !important;"><sup><?= utf8_encode($paquetes[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
-														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p>
-														<!--PRECIO ;)-->
 														<?php 
-															if ($query[$r][5] == $oferta[0][0]) {
+															if ($paquetes[$r][7] == 1) {
 																echo '<div style="background-color: red; height:65px">
 																<p style="font-size: 17px !important;">Paquete con Descuento</p>
-																<p style="margin-top: 10px;"><sup>'. utf8_encode($query[$r][3]).'00</sup> </p> 
+																<p style="margin-top: 10px;"><sup>$'. utf8_encode($paquetes[$r][6]).'</sup> </p> 
 																</div>';
 															}
-														?>
+															else{
+																echo '<div style="height: 65px;"> <p style="color: white !important;"><sup> $ '. utf8_encode($paquetes[$r][6]).'</sup></p> </div>';
+															}
 
+														?>
+														<!--PRECIO ;)-->
+														 
 													</div>
 													<div class="pricing_middle">
 														<ul>
-															<li><?= $query[$r][2] ?></li>
+															<li><?= $paquetes[$r][3] ?></li>
 															<li>Iva Incluido</li>
 															<li>Pagos Mensuales</li>
-															<li>Hasta <?= utf8_encode($query[$r][1]) ?> ↓↑ Mbps</li>
+															<li>Hasta <?= utf8_encode($paquetes[$r][2]) ?> ↓↑ Mbps</li>
 															<!--Velocidad ;)-->
 														</ul>
 													</div>
 													<div class="pricing_bottom">
-														<a href="login.html">Contratar</a>
+														<a href="login.php">Contratar</a>
 													</div>
 												</div>
 										<?php
 											}
 										}
 										?>
+
+										<!--FIN-->
 
 									</div>
 								</div>
@@ -303,47 +315,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="text-info-sec">
 								<div class="service-in text-left">
 									<div class="card">
-										<?php
-										// deberian ser 6 (5 PHP) 
+									<?php
 
-										for ($r = 0; $r < count($query); $r++) { //crea tarjetas
-											if ($query[$r][4] == "HOGAR") {
+									for ($r = 0; $r < count($paquetes); $r++) { //crea tarjetas
+											if ($paquetes[$r][4] == "HOGAR") {
+
 										?>
-												<div class="col-md-4 one_third pricing one_third2">
+												<div class="col-md-4 one_third pricing one_third2 ">
 													<div class="pricing_top">
-														<h6><?= utf8_encode($query[$r][0]) ?></h6> <br>
+														<h6><?= utf8_encode($paquetes[$r][1]) ?></h6> <br>
 														<!--Nombre Paquete ;)-->
-														<p><sup><?= utf8_encode($query[$r][4]) ?></sup></p> <br>
+														<p style="color: white !important;"><sup><?= utf8_encode($paquetes[$r][4]) ?></sup></p> <br>
 														<!--CATEGORIA ;)-->
-														<p><sup>$ <?= utf8_encode($query[$r][3]) ?>.00</sup></p>
-														<!--PRECIO ;)-->
 														<?php 
-															if ($query[$r][5] == $oferta[0][0]) {
+															if ($paquetes[$r][7] == 1) {
 																echo '<div style="background-color: red; height:65px">
 																<p style="font-size: 17px !important;">Paquete con Descuento</p>
-																<p style="margin-top: 10px;"><sup>'. utf8_encode($query[$r][3]).'00</sup> </p> 
+																<p style="margin-top: 10px;"><sup>$'. utf8_encode($paquetes[$r][6]).'</sup> </p> 
 																</div>';
 															}
+															else{
+																echo '<div style="height: 65px;"> <p style="color: white !important;"><sup> $ '. utf8_encode($paquetes[$r][6]).'</sup></p> </div>';
+															}
+
 														?>
+														<!--PRECIO ;)-->
+														 
 													</div>
 													<div class="pricing_middle">
 														<ul>
-															<li><?= $query[$r][2] ?></li>
+															<li><?= $paquetes[$r][3] ?></li>
 															<li>Iva Incluido</li>
 															<li>Pagos Mensuales</li>
-															<li>Hasta <?= utf8_encode($query[$r][1]) ?> ↓↑ Mbps</li>
+															<li>Hasta <?= utf8_encode($paquetes[$r][2]) ?> ↓↑ Mbps</li>
 															<!--Velocidad ;)-->
 														</ul>
 													</div>
 													<div class="pricing_bottom">
-														<a href="login.html">Contratar</a>
+														<a href="login.php">Contratar</a>
 													</div>
 												</div>
 										<?php
 											}
 										}
-										?> 
+										?>
 
+										<!--FIN-->
 									</div>
 								</div>
 							</div>

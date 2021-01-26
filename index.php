@@ -3,9 +3,11 @@ include './include/conexion.php';
 //Hay que tomar en cuenta que esto es una mala practica esta info se debe de almacenar en archivos .env
 $conexion->Conectar();
 //Query 
-$query = $conexion->ConsultaSql("select categoria from categorias");
-//$conexion->resultadoSql();
-$paquetesOfertas = $conexion->ConsultaSql("call PaquetesConOferta;");
+$paquetes = $conexion->ConsultaSql("call getPaquetes();");
+
+$categorias = $conexion->ConsultaSql("select categoria from categorias");
+
+$conexion->CerrarSql();
 
 //var_dump(count($query[0])); // 7 filas * 5 columnas   
 ?>
@@ -121,12 +123,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--Pintado de productos aqui esta el PHP que usted no puede ver ;)-->
 		<?php
 		// deberian ser 6 (5 PHP) 
-		for ($r = 0; $r < count($query); $r++) { //crea tarjetas
+		for ($r = 0; $r < count($categorias); $r++) { //crea tarjetas
 		?>
 			<div class="col-md-4 one_third pricing">
 				<div class="pricing_top">
-					<h6> <a href="paquetes.php"><?= utf8_encode($query[$r][0]) ?></a></h6> <br>
-					<!--Nombre Paquete ;)-->
+					<h6> <a href="paquetes.php"><?= utf8_encode($categorias[$r][0]) ?></a></h6> <br>
+					<!--CATEGORIAS ;)-->
 				</div>
 			</div>
 		<?php
@@ -140,19 +142,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- pricing table -->
 			<?php
 			// deberian ser 6 (5 PHP) 
-			for ($r = 0; $r < count($paquetesOfertas); $r++) { //crea tarjetas
+			for ($r = 0; $r < count($paquetes); $r++) { //crea tarjetas
+				if($paquetes[$r][7]==1){
+
 			?>
 				<div class="col-md-4 one_third pricing one_third2">
 					<div class="pricing_top">
-						<h6><?= utf8_encode($paquetesOfertas[$r][0]) ?></h6> <br>
+						<h6><?= utf8_encode($paquetes[$r][1]) ?></h6> <br>
 						<!--Nombre Paquete ;)-->
-						<p style="color: white !important;"><sup><?= utf8_encode($paquetesOfertas[$r][3]) ?></sup></p>
+						<p style="color: white !important;"><sup><?= utf8_encode($paquetes[$r][4]) ?></sup></p>
 						<!--CATEGORIA ;)-->
 						 
 						<!--PRECIO ;)-->
 						<div style="background-color: red; height:65px">
 						<p style="font-size: 17px !important;">Paquete con Descuento</p>
-						<p style="margin-top: 10px;"><sup>$ <?= utf8_encode($paquetesOfertas[$r][4]) ?>.00</sup> </p> 
+						<p style="margin-top: 10px;"><sup>$ <?= utf8_encode($paquetes[$r][6]) ?></sup> </p> 
 						</div>
 						
 					</div>
@@ -161,7 +165,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li>Ideal para el hogar</li>
 							<li>Iva Incluido</li>
 							<li>Pagos Mensuales</li>
-							<li>Hasta <?= utf8_encode($paquetesOfertas[$r][1]) ?> ↓↑ Mbps</li>
+							<li>Hasta <?= utf8_encode($paquetes[$r][2]) ?> ↓↑ Mbps</li>
 						</ul>
 					</div>
 					<div class="pricing_bottom">
@@ -169,6 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 			<?php
+				}
 			}
 			?>
 			<div class="clearfix"></div>
