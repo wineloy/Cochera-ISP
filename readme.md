@@ -1,6 +1,6 @@
 # Bienvenido a Cochera Internet
 
-En esta rama de desarrollo se ven muestran todos los scripts de PHP y JavaScript necesarios para el funcionamiento del sistema web, se esta usando vainilla JS y PHP crudo y no se sigue un patrón arquitectónico, consideramos esta versión **MVP** es por lo tanto que si tiene exito en un futuro se migraría a un framework 
+En esta rama de desarrollo se muestran todos los scripts de PHP y JavaScript necesarios para el funcionamiento del sistema web, se esta usando vainilla JS y PHP crudo y no se sigue un patrón arquitectónico, consideramos esta versión **MVP** es por lo tanto que si tiene exito en un futuro se migraría a un framework 
 
 ## Requerimientos mínimos
 
