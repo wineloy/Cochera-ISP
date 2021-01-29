@@ -4,8 +4,52 @@ let btnAgregar = document.querySelector("#btnAgregar");
 let adicionalTitulo = document.querySelector("#titulo");
 let adicionalPaquete = document.querySelector("#adicionalPaquete");
 let adicionalPrecio = document.querySelector("#adicionalPrecio");
+//copia del DOM paquete
 let copiado = document.querySelector("#paquete");
 copiado.setAttribute("name","paquete2");
+
+//carga de datos formulario
+document.addEventListener("DOMContentLoaded", e =>{
+
+  fetch("/include/carritoPaquetes.php",{
+    method: "GET"
+  })
+  .then(request => {
+
+      if(request.ok)
+        return request.json();
+      else
+        throw("Error en la petición");
+  })
+  .then(data =>{
+    almacenamiento(data);
+  });
+
+});
+
+async function almacenamiento(data){
+  console.log(data);
+  //consulta de datos 
+let btnSiguiente = document.querySelector("#btnSiguiente");
+
+btnSiguiente.addEventListener("click", e =>{
+  e.preventDefault();
+
+  let precio1 = document.getElementById("Precio1"); 
+  var precio2 = document.getElementById("Precio2");
+
+
+  if(precio2 != null){
+    precio1.value;
+    precio2.value;
+  }
+  /* let data = new FormData(formulario);
+  data.forEach(element => {
+    console.log(element);
+  }) */
+})
+}
+
 
 btnAgregar.addEventListener("click", (e) => {
     e.preventDefault();
@@ -15,7 +59,7 @@ btnAgregar.addEventListener("click", (e) => {
     let contador = 1;
     let titulo = ` <p class=" my-2 text-center spacing">Segunda instalacion</p>`;
     let paquete = copiado.innerHTML;
-    let precio = ` <input type="text" class="form-control" readonly placeholder="Precio">`;
+    let precio = ` <input id="Precio2" type="text" class="form-control" readonly placeholder="Precio">`;
     if (adicionalTitulo.textContent === "") {
         adicionalTitulo.innerHTML += titulo;
         adicionalPaquete.innerHTML += paquete;
@@ -57,16 +101,7 @@ cerrarSesion.addEventListener("click", (e)=>{
       });
 });
 
-//
-let btnSiguiente = document.querySelector("#btnSiguiente");
 
-btnSiguiente.addEventListener("click", e =>{
-  e.preventDefault();
-  let data = new FormData(formulario);
-  data.forEach(element => {
-    console.log(element);
-  })
-})
 
 
 

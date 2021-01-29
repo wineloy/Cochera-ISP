@@ -145,14 +145,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div id="paquete" class="form-group col-sm-12 col-md-6">
 					<select name="paquete" class="form-control" id="PaqueteSeleccionado1">
 					<?php
-						for($r = 0; $r < count($paquetes); $r++)
-							echo '<option value='.$paquetes[$r][0].'>'.	$paquetes[$r][1].'</option>';
-							
+					for	($i=0; $i< count($paquetes); $i++) 
+					echo '<option value="$paquetes[0]">'.$paquetes[$i][1]. '</option>;'
 					?>
 					</select>
 				</div>
 				<div class="form-group col-sm-12 col-md-6">
-					<input value="100" name="precio" type="text" class="form-control" readonly placeholder="Precio">
+					<input id="Precio1" name="precio" type="text" class="form-control" readonly placeholder="Precio">
 				</div>
 
 				<!-- Se generaran con JS pd No estoy orgulloso de esto :'( -->
