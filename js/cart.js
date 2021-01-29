@@ -4,12 +4,12 @@ let btnAgregar = document.querySelector("#btnAgregar");
 let adicionalTitulo = document.querySelector("#titulo");
 let adicionalPaquete = document.querySelector("#adicionalPaquete");
 let adicionalPrecio = document.querySelector("#adicionalPrecio");
+let adicional = document.querySelector("#adicional");
+let json;
 //copia del DOM paquete
-let copiado = document.querySelector("#paquete");
-copiado.setAttribute("name","paquete2");
 
 //carga de datos formulario
-document.addEventListener("DOMContentLoaded", e =>{
+document.addEventListener("DOMContentLoaded", async e =>{
 
   fetch("/include/carritoPaquetes.php",{
     method: "GET"
@@ -28,52 +28,55 @@ document.addEventListener("DOMContentLoaded", e =>{
 });
 
 async function almacenamiento(data){
-  console.log(data);
-  //consulta de datos 
-let btnSiguiente = document.querySelector("#btnSiguiente");
-
-btnSiguiente.addEventListener("click", e =>{
-  e.preventDefault();
-
-  let precio1 = document.getElementById("Precio1"); 
-  var precio2 = document.getElementById("Precio2");
-
-
-  if(precio2 != null){
-    precio1.value;
-    precio2.value;
-  }
-  /* let data = new FormData(formulario);
-  data.forEach(element => {
-    console.log(element);
-  }) */
-})
+  json = await data;
+  //consulta de datos
 }
 
 
 btnAgregar.addEventListener("click", (e) => {
     e.preventDefault();
-    adicionalTitulo.setAttribute("class", "col-12");
-    adicionalPaquete.setAttribute("class", "form-group col-sm-12 col-md-6");
-    adicionalPrecio.setAttribute("class", "form-group col-sm-12 col-md-6");
-    let contador = 1;
-    let titulo = ` <p class=" my-2 text-center spacing">Segunda instalacion</p>`;
-    let paquete = copiado.innerHTML;
-    let precio = ` <input id="Precio2" type="text" class="form-control" readonly placeholder="Precio">`;
-    if (adicionalTitulo.textContent === "") {
-        adicionalTitulo.innerHTML += titulo;
-        adicionalPaquete.innerHTML += paquete;
-        adicionalPrecio.innerHTML += precio;
-        contador++;
+
+    
+   
+   
+
+    if(adicional.style.display == "block") {
+      Swal.fire(
+        'No es posible realizar esta acción',
+        'Por el momento solo se pueden solicitar 2 instalaciones por cliente',
+        'warning'
+    );
+    
+    console.log("Este es el secundario"+PaqueteSecundario.value);
+    }else {
+      adicional.style.display="block";
+      
     }
-    else{
-        Swal.fire(
-            'No es posible realizar esta acción',
-            'Por el momento solo se pueden solicitar 2 instalaciones por cliente',
-            'warning'
-          );
-    }
+  
 });
+//
+
+function getPrecioPaqueteUno(){
+  var x = document.getElementById("PaqueteInicial").value;
+  var precio1 = document.getElementById("Precio1");
+  for(let filas= 0; filas < json.length; filas ++)
+      if(x==json[filas][0]){
+        precio1.value =json[filas][6];
+        break;
+      }
+}
+
+function getPrecioPaqueteDos() {
+  var x = document.getElementById("PaqueteSecundario").value;
+  var precio2 = document.getElementById("Precio2");
+  for(let filas= 0; filas < json.length; filas ++)
+      if(x==json[filas][0]){
+        precio2.value =json[filas][6];
+        break;
+      }
+}
+
+
 
 //Cerrado de sesión 
 let cerrarSesion = document.querySelector('#CerrarSesion');

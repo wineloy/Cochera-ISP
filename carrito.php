@@ -142,12 +142,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-12">
 					<p class=" my-2 text-center spacing">Primera instalacion</p>
 				</div>
-				<div id="paquete" class="form-group col-sm-12 col-md-6">
-					<select name="paquete" class="form-control" id="PaqueteSeleccionado1">
-					<?php
-					for	($i=0; $i< count($paquetes); $i++) 
-					echo '<option value="$paquetes[0]">'.$paquetes[$i][1]. '</option>;'
-					?>
+				<div class="form-group col-sm-12 col-md-6">
+					<select onchange="getPrecioPaqueteUno()" id="PaqueteInicial" name="paquete" class="form-control">
+					<option value=""> Selecciona Paquete</option>
+						<?php
+							for ($i = 0; $i < count($paquetes); $i++)
+								echo "<option value=".$paquetes[$i][0].">" . $paquetes[$i][1] . '</option>';
+						?>
 					</select>
 				</div>
 				<div class="form-group col-sm-12 col-md-6">
@@ -155,12 +156,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 
 				<!-- Se generaran con JS pd No estoy orgulloso de esto :'( -->
-				<div id="titulo" class="spacing"></div>
-				<div id="adicionalPaquete"></div>
-				<div id="adicionalPrecio"></div>
+				<div style="display:none" id="adicional">
+					<div class="col-12">
+						<p class=" my-2 text-center spacing">Segunda Instalación</p>
+					</div>
+					<div id="paque" class="form-group col-sm-12 col-md-6">
+						<select onchange="getPrecioPaqueteDos()" id="PaqueteSecundario" name="paquete2" class="form-control">
+							<?php
+								for ($i = 0; $i < count($paquetes); $i++)
+								echo "<option value=".$paquetes[$i][0].">" . $paquetes[$i][1] . '</option>';
+							?>
+						</select>
+					</div>
+					<div class="form-group col-sm-12 col-md-6">
+						<input id="Precio2" name="precio" type="text" class="form-control" readonly placeholder="Precio">
+					</div>
+				</div>
 
 				<div class="form-group col-sm-12 col-md-6">
-					<div class=" flex ">
+					<div class="flex">
 						<input id="btnAgregar" type="button" class="boton form-control btn btn-success" value="Agregar">
 					</div>
 				</div>
@@ -170,8 +184,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input id="btnSiguiente" type="button" class="boton form-control btn btn-primary" value="Siguiente">
 					</div>
 				</div>
+
 			</div>
 		</form>
+
 		<!-- Boton de cerrado de sesión, este nunca caduca -->
 		<div class="row">
 			<div class="form-group col-sm-12 col-md-12">
