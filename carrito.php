@@ -139,15 +139,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="form-group col-sm-12 col-md-6">
 					<input type="email" class="form-control" name="email" placeholder="Correo Electronico" value="<?= $query[0][3] ?>" readonly>
 				</div>
+
 				<div class="col-12">
 					<p class=" my-2 text-center spacing">Primera instalacion</p>
 				</div>
 				<div class="form-group col-sm-12 col-md-6">
-					<select onchange="getPrecioPaqueteUno()" id="PaqueteInicial" name="paquete" class="form-control">
-					<option value=""> Selecciona Paquete</option>
+					<select onchange="getPrecioPaqueteUno()" id="PaqueteInicial" name="paqueteUno" class="form-control">
+						<option value="0"> Selecciona Paquete</option>
 						<?php
-							for ($i = 0; $i < count($paquetes); $i++)
-								echo "<option value=".$paquetes[$i][0].">" . $paquetes[$i][1] . '</option>';
+						for ($i = 0; $i < count($paquetes); $i++)
+							echo "<option value=" . $paquetes[$i][0] . ">" . $paquetes[$i][1] . '</option>';
 						?>
 					</select>
 				</div>
@@ -155,21 +156,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input id="Precio1" name="precio" type="text" class="form-control" readonly placeholder="Precio">
 				</div>
 
-				<!-- Se generaran con JS pd No estoy orgulloso de esto :'( -->
+				<div class="form-group col-sm-12 col-md-3">
+					<input type="text" class="form-control" name="DireccionUno" placeholder="Dirección" value="">
+				</div>
+
+				<div class="form-group col-sm-12 col-md-3">
+					<input type="text" class="form-control" name="NumeroUno" placeholder="Numero" value="">
+				</div>
+
+				<div class="form-group col-sm-12 col-md-3">
+					<input type="text" class="form-control" name="LocalidadUno" placeholder="Localidad" value="">
+				</div>
+
+				<div class="form-group col-sm-12 col-md-3">
+					<input type="text" class="form-control" name="ReferenciaUno" placeholder="Referencia" value="">
+				</div>
+
 				<div style="display:none" id="adicional">
 					<div class="col-12">
 						<p class=" my-2 text-center spacing">Segunda Instalación</p>
 					</div>
 					<div id="paque" class="form-group col-sm-12 col-md-6">
-						<select onchange="getPrecioPaqueteDos()" id="PaqueteSecundario" name="paquete2" class="form-control">
+						<select onchange="getPrecioPaqueteDos()" id="PaqueteSecundario" name="paqueteDos" class="form-control">
+							<option value="0">Selecciona Paquete</option>
 							<?php
-								for ($i = 0; $i < count($paquetes); $i++)
-								echo "<option value=".$paquetes[$i][0].">" . $paquetes[$i][1] . '</option>';
+							for ($i = 0; $i < count($paquetes); $i++)
+								echo "<option value=" . $paquetes[$i][0] . ">" . $paquetes[$i][1] . '</option>';
 							?>
 						</select>
 					</div>
 					<div class="form-group col-sm-12 col-md-6">
 						<input id="Precio2" name="precio" type="text" class="form-control" readonly placeholder="Precio">
+					</div>
+
+					<div class="form-group col-sm-12 col-md-3">
+						<input type="text" class="form-control" name="DireccionDos" placeholder="Dirección" value="">
+					</div>
+
+					<div class="form-group col-sm-12 col-md-3">
+						<input type="text" class="form-control" name="NumeroDos" placeholder="Numero" value="">
+					</div>
+
+					<div class="form-group col-sm-12 col-md-3">
+						<input type="text" class="form-control" name="LocalidadDos" placeholder="Localidad" value="">
+					</div>
+
+					<div class="form-group col-sm-12 col-md-3">
+						<input type="text" class="form-control" name="ReferenciaDos" placeholder="Referencia" value="">
 					</div>
 				</div>
 
@@ -181,10 +214,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<div class="form-group col-sm-12 col-md-6">
 					<div class="flex">
-						<input id="btnSiguiente" type="button" class="boton form-control btn btn-primary" value="Siguiente">
+						<input id="btnSiguiente" type="submit" class="boton form-control btn btn-primary" value="Siguiente">
 					</div>
 				</div>
-
 			</div>
 		</form>
 

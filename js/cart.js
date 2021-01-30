@@ -5,7 +5,10 @@ let adicionalTitulo = document.querySelector("#titulo");
 let adicionalPaquete = document.querySelector("#adicionalPaquete");
 let adicionalPrecio = document.querySelector("#adicionalPrecio");
 let adicional = document.querySelector("#adicional");
+let btnSiguiente = document.querySelector("#btnSiguiente");
+let datos = localStorage;
 let json;
+
 //copia del DOM paquete
 
 //carga de datos formulario
@@ -36,10 +39,6 @@ async function almacenamiento(data){
 btnAgregar.addEventListener("click", (e) => {
     e.preventDefault();
 
-    
-   
-   
-
     if(adicional.style.display == "block") {
       Swal.fire(
         'No es posible realizar esta acción',
@@ -54,7 +53,6 @@ btnAgregar.addEventListener("click", (e) => {
     }
   
 });
-//
 
 function getPrecioPaqueteUno(){
   var x = document.getElementById("PaqueteInicial").value;
@@ -63,7 +61,8 @@ function getPrecioPaqueteUno(){
       if(x==json[filas][0]){
         precio1.value =json[filas][6];
         break;
-      }
+      }else
+      precio1.value="";
 }
 
 function getPrecioPaqueteDos() {
@@ -74,8 +73,9 @@ function getPrecioPaqueteDos() {
         precio2.value =json[filas][6];
         break;
       }
+      else
+      precio2.value="";
 }
-
 
 
 //Cerrado de sesión 
@@ -102,6 +102,27 @@ cerrarSesion.addEventListener("click", (e)=>{
           });
         }
       });
+});
+
+btnSiguiente.addEventListener("click", e => {
+  e.preventDefault();
+  let formularioEnviado = new FormData(formulario);
+
+  fetch('./include/ProcesoCompra.php',{
+
+    method : "POST",
+    body : formularioEnviado
+  })
+  .then(request => {
+      if(request.ok)
+        return request.text();
+      else
+        throw("Error en la solicitud "+request.statusText);
+  })
+  .then(data => {
+      console.log(data)
+    })
+  .catch(error => console.log("error en la peticion " + error));
 });
 
 
