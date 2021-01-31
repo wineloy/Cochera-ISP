@@ -18,30 +18,20 @@ $numeroDos;
 $localidadDos;
 $referenciaDos;
 
+$idPaquete = $_POST["paqueteUno"];
+$direccionUno = $_POST["DireccionUno"];
+$numeroUno = $_POST["NumeroUno"];
+$localidadUno = $_POST["LocalidadUno"];
+$referenciaUno = $_POST["ReferenciaUno"];
+
+
 //Se estan comprando dos paquetes
 // Lo siguiente se puede mejorar 
 if(isset($_POST["paqueteDos"]) && $_POST["paqueteDos"]!=0) {
 
-    $idPaquete = $_POST["paqueteUno"];
-    $direccionUno = $_POST["DireccionUno"];
-    $numeroUno = $_POST["NumeroUno"];
-    $localidadUno = $_POST["LocalidadUno"];
-    $referenciaUno = $_POST["ReferenciaUno"];
-    
     $idPaqueteDos = $_POST["paqueteDos"];
     $direccionDos = $_POST["DireccionDos"];
     $numeroDos = $_POST["NumeroDos"];
     $localidadDos = $_POST["LocalidadDos"] ;
     $referenciaDos = $_POST["ReferenciaDos"];
-
 }
-else {
-    //Solo es un paquete 
-    $idPaquete = $_POST["paqueteUno"];
-    $direccionUno = $_POST["DireccionUno"];
-    $numeroUno = $_POST["NumeroUno"];
-    $localidadUno = $_POST["LocalidadUno"];
-    $referenciaUno = $_POST["ReferenciaUno"];
-}
-
-// Registrar Paquetes en la base de datos
