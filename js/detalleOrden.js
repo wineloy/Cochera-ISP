@@ -9,7 +9,10 @@ compra.addEventListener("click",e => {
         'success'
       );
 
-      window.location = "./index.php";
+      setTimeout(() => 
+      { 
+        window.location = "./index.php"; 
+      }, 3000);
 
 });
 
