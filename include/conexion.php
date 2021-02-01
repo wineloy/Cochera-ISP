@@ -74,7 +74,7 @@ class ConexionSql{
 if(isset($_ENV["HOSTNAME"]) && isset($_ENV["USERNAME"]) && isset($_ENV["PASSWORD"]) && isset($_ENV["DATABASE"])){
 	$conexion = new ConexionSql($_ENV["HOSTNAME"],$_ENV["USERNAME"], $_ENV["PASSWORD"],$_ENV["DATABASE"]);
 }else{
-	$conexion = new ConexionSql("localhost","root", "","WISPCH");
+	$conexion = new ConexionSql("142.93.251.244","wineloy", "123456","WISPCH");
 }
 
 ?>
