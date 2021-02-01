@@ -22,10 +22,6 @@ if (!isset($_SESSION["email"])) {
 			 $conexion->ConsultaSql("call crearUsuario('$nombre', 'apellidos', 'sin numero', '$email','authFirebase');");
 		}else
 			$conexion->ConsultaSql("call crearUsuario('$nombre',' ', '$telefono', '$email','authFirebase');");
-
-		//Insertar a mi base de datos
-		
-
 		//header("location: login.php");
 	}
 

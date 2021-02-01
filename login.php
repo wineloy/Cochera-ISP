@@ -139,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<input type="password" name="contraseña" required>
 						</div>
 						<input type="submit" value="login">
-						<p> <strong>OR</strong><a id href="#"><img src="images/facebook-icon.png"></a> <a id="loginGoogle" href="#"><img src="images/gmail-icon.png" alt=""></a></p>
+						<p> <strong>OR</strong><a id="loginFacebook"><img src="images/facebook-icon.png"></a> <a id="loginGoogle" href="#"><img src="images/gmail-icon.png" alt=""></a></p>
 					</form>
 				</div>
 				<div class="clearfix"> </div>
