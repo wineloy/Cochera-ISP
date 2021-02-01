@@ -71,7 +71,7 @@ class ConexionSql{
 
 
 // Esto se hace para heredar la conexion con env
-if(isset($_ENV["DB_HOST"]) && isset($_ENV["DB_USER"]) && isset($_ENV["DB_PASSWORD"]) && isset($_ENV["DB_NAme"])){
+if(isset($_ENV["DB_HOST"]) && isset($_ENV["DB_USER"]) && isset($_ENV["DB_PASSWORD"]) && isset($_ENV["DB_NAME"])){
 	$conexion = new ConexionSql($_ENV["DB_HOST"],$_ENV["DB_USER"], $_ENV["DB_PASSWORD"],$_ENV["DB_NAme"]);
 }else{
 	$conexion = new ConexionSql("localhost","root", "","WISPCH");
