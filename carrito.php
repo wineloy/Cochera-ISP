@@ -13,6 +13,18 @@ if (!isset($_SESSION["email"])) {
 		$query[0][1] = "";
 		$query[0][2] = $_SESSION["telefono"];
 		$query[0][3] = $_SESSION["email"];
+		 
+		$nombre =  $_SESSION["nombre"] ;
+		$telefono = $_SESSION["telefono"];
+		$email = $_SESSION["email"];
+
+		if ($telefono == "null") {
+			 $conexion->ConsultaSql("call crearUsuario('$nombre', 'apellidos', 'sin numero', '$email','authFirebase');");
+		}else
+			$conexion->ConsultaSql("call crearUsuario('$nombre',' ', '$telefono', '$email','authFirebase');");
+
+		//Insertar a mi base de datos
+		
 
 		//header("location: login.php");
 	}
