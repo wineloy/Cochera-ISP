@@ -1,6 +1,6 @@
 <?php
 
-require_once './include/conexion.php';
+require_once __DIR__.'/include/conexion.php';
 $conexion->Conectar();
 session_start();
 

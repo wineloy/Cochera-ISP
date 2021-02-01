@@ -1,7 +1,7 @@
 <?php
 // function require one parament type String 
 // Return query SQL 
-include './include/conexion.php';
+include __DIR__.'/include/conexion.php';
 //Hay que tomar en cuenta que esto es una mala practica esta info se debe de almacenar en archivos .env
 $conexion->Conectar();
 //Query 

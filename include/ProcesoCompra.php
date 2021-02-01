@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once __DIR__."/conexion.php";
 //Ya tengo el email
 session_start();
 $emailUser = $_SESSION["email"];

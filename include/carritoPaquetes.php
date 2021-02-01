@@ -1,5 +1,5 @@
 <?php
-require_once "conexion.php";
+require_once __DIR__."/conexion.php";
 header('Content-Type: application/json');
 
 $conexion->Conectar();
