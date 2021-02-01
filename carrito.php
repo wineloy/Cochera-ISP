@@ -1,7 +1,5 @@
 <?php
 require_once __DIR__ . '/include/conexion.php';
-
-echo  __DIR__ . '/include/conexion.php';
 session_start();
 
 if (!isset($_SESSION["email"])) {
