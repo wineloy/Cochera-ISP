@@ -9,10 +9,12 @@ if (!isset($_SESSION["email"])) {
 	$conexion->Conectar();
 	$query = $conexion->ConsultaSql("call datosFormularioCompra('$email')");
 	if ($query[0][0] == -1) {
-		$query[0][0] = "Error";
-		$query[0][1] = "Error";
-		$query[0][2] = "Error";
-		header("location: login.php");
+		$query[0][0] = $_SESSION["nombre"] ;
+		$query[0][1] = "";
+		$query[0][2] = $_SESSION["telefono"];
+		$query[0][3] = $_SESSION["email"];
+
+		//header("location: login.php");
 	}
 
 	$paquetes = $conexion->ConsultaSql("call getPaquetes();");

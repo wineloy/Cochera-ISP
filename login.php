@@ -139,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<input type="password" name="contraseña" required>
 						</div>
 						<input type="submit" value="login">
-						<p> <strong>OR</strong><a href="#"><img src="images/facebook-icon.png"></a> <a href="#"><img src="images/gmail-icon.png" alt=""></a></p>
+						<p> <strong>OR</strong><a id href="#"><img src="images/facebook-icon.png"></a> <a id="loginGoogle" href="#"><img src="images/gmail-icon.png" alt=""></a></p>
 					</form>
 				</div>
 				<div class="clearfix"> </div>
@@ -176,6 +176,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //here ends scrolling icon -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="js/user.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB8gHIxH-FL9Ey1o3wE8z1zhNeQkz5h50c",
+    authDomain: "wisp-8fbbb.firebaseapp.com",
+    projectId: "wisp-8fbbb",
+    storageBucket: "wisp-8fbbb.appspot.com",
+    messagingSenderId: "813578148618",
+    appId: "1:813578148618:web:dfc3ab727a83b9009b78f3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+ <!-- Add Firebase products that you want to use -->
+ <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+ 
+  <script src="/js/fsLogin.js"></script>
 
 </body>
 
