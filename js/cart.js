@@ -121,6 +121,7 @@ btnSiguiente.addEventListener("click", e => {
   })
   .then(data => {
       console.log(data)
+      window.location = "./detalleorden.php"
     })
   .catch(error => console.log("error en la peticion " + error));
 });
